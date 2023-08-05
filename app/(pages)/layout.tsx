@@ -58,17 +58,21 @@ export const metadata: Metadata = {
 
 // Fonts
 
-// TODO: Reimplement
-// const interFont = localFont({
-//   src: "../fonts/inter-variable.ttf",
-//   display: "swap",
-//   variable: "--font-inter",
-// });
+const loraFont = localFont({
+  src: "../fonts/lora-variable.ttf",
+  display: "swap",
+  variable: "--font-lora",
+});
+
+const merriweatherSansFont = localFont({
+  src: "../fonts/merriweather-sans-variable.ttf",
+  display: "swap",
+  variable: "--font-merriweather-sans",
+});
 
 export const RootLayout = ({ children }: Props) => {
   return (
-    // <html className={`${interFont.variable}`}> TODOL
-    <html lang="en">
+    <html lang="en" className={`${loraFont.variable} ${merriweatherSansFont.variable}`}>
       <body>{children}</body>
     </html>
   );
