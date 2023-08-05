@@ -1,3 +1,17 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+const addPlugin = require("tailwindcss/plugin");
+
+const {
+  baseFontSizePx,
+  baseBrowserFontSizePx,
+  unitToPercent,
+  unitToPx,
+  pxUnitToRem,
+  addPxSuffix,
+  createScale,
+  flatten,
+} = require("./tailwind.config.utils");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
@@ -5,19 +19,84 @@ module.exports = {
     colors: {
       white: "#FFFFFF",
       black: "#424242",
+      gray: {
+        10: "#F8F8F8",
+        20: "#E9E9E9",
+        30: "#BCBCBC",
+        50: "#7C7C7C",
+      },
+      transparent: "transparent",
+      current: "currentColor",
+    },
+    spacing: {
+      // Create spacing scale with rem units
+      ...createScale({ max: 32, steps: 1, formatVal: pxUnitToRem }),
+      ...createScale({ min: 32, max: 64, steps: 2, formatVal: pxUnitToRem }),
+      ...createScale({ min: 68, max: 128, steps: 4, formatVal: pxUnitToRem }),
+      ...createScale({ min: 136, max: 256, steps: 8, formatVal: pxUnitToRem }),
+      ...createScale({ min: 272, max: 512, steps: 16, formatVal: pxUnitToRem }),
+      ...createScale({ min: 544, max: 1024, steps: 32, formatVal: pxUnitToRem }),
+
+      // Recreate same scale but with px units
+      ...createScale({ max: 32, steps: 1, formatKey: addPxSuffix, formatVal: unitToPx }),
+      ...createScale({ min: 32, max: 64, steps: 2, formatKey: addPxSuffix, formatVal: unitToPx }),
+      ...createScale({ min: 68, max: 128, steps: 4, formatKey: addPxSuffix, formatVal: unitToPx }),
+      ...createScale({ min: 136, max: 256, steps: 8, formatKey: addPxSuffix, formatVal: unitToPx }),
+      ...createScale({ min: 272, max: 512, steps: 16, formatKey: addPxSuffix, formatVal: unitToPx }),
+      ...createScale({ min: 544, max: 1024, steps: 32, formatKey: addPxSuffix, formatVal: unitToPx }),
     },
     fontFamily: {
       serif: ["var(--font-lora)"],
       sans: ["var(--font-merriweather-sans)"],
     },
-    // fontSize:{}
-    // fontWeight: {}
-    // borderRadius: {}
+    fontSize: {
+      ...flatten({
+        "title-1": {
+          DEFAULT: [wildConfig.utils.pxRem(26), { lineHeight: 1.5, letterSpacing: "-0.025em" }],
+          desktop: [wildConfig.utils.pxRem(28), { lineHeight: 1.5, letterSpacing: "-0.025em" }],
+        },
+        "title-2": {
+          DEFAULT: [wildConfig.utils.pxRem(26), { lineHeight: 1.5, letterSpacing: "-0.025em" }],
+        },
+        "title-3": {
+          DEFAULT: [wildConfig.utils.pxRem(20), { lineHeight: 1.5, letterSpacing: "-0.025em" }],
+        },
+        "body-4": {
+          DEFAULT: [wildConfig.utils.pxRem(18), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
+        },
+        "body-3": {
+          DEFAULT: [wildConfig.utils.pxRem(16), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
+        },
+        "body-2": {
+          DEFAULT: [wildConfig.utils.pxRem(14), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
+        },
+        "body-1": {
+          DEFAULT: [wildConfig.utils.pxRem(12), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
+        },
+      }),
+    },
+    fontWeight: {
+      light: 300,
+      regular: 400,
+    },
+    borderRadius: {
+      none: "0px",
+      md: "0.8rem",
+      full: "9999px",
+    },
     extend: {
       screens: {
         "hover-supported": { raw: "(hover: hover)" },
       },
     },
   },
-  plugins: [],
+  plugins: [
+    addPlugin(function ({ addBase, theme }) {
+      addBase({
+        ":root": {
+          fontSize: unitToPercent((baseFontSizePx / baseBrowserFontSizePx) * 100),
+        },
+      });
+    }),
+  ],
 };
