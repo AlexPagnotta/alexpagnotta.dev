@@ -1,0 +1,33 @@
+@tailwind base;
+
+/* Css Variables */
+/* :root {
+} */
+
+/* @media screen(lg) {
+  :root {
+  }
+} */
+
+/* Global Styles */
+html {
+  @apply bg-white leading-none text-black cursor-default;
+}
+
+body {
+  @apply font-sans antialiased text-sm lg:text-sm;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .tap-highlight-none {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
