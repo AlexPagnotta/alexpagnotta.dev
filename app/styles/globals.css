@@ -1,21 +1,12 @@
 @tailwind base;
 
-/* Css Variables */
-/* :root {
-} */
-
-/* @media screen(lg) {
-  :root {
-  }
-} */
-
 /* Global Styles */
 html {
-  @apply bg-white leading-none text-black cursor-default;
+  @apply bg-theme-color-body-bg leading-none text-black cursor-default;
 }
 
 body {
-  @apply font-sans antialiased text-sm lg:text-sm;
+  @apply font-sans antialiased text-body-3;
 }
 
 html,

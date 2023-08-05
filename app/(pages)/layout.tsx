@@ -1,6 +1,9 @@
 import { type Metadata } from "next";
 import localFont from "next/font/local";
 import { type ReactNode } from "react";
+
+import "../styles/colors.css";
+import "../styles/themes/light.css";
 import "../styles/globals.css";
 
 type Props = {
@@ -72,7 +75,7 @@ const merriweatherSansFont = localFont({
 
 export const RootLayout = ({ children }: Props) => {
   return (
-    <html lang="en" className={`${loraFont.variable} ${merriweatherSansFont.variable}`}>
+    <html lang="en" className={`${loraFont.variable} ${merriweatherSansFont.variable} theme-light`}>
       <body>{children}</body>
     </html>
   );

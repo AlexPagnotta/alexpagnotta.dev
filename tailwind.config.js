@@ -17,16 +17,22 @@ module.exports = {
   content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     colors: {
-      white: "#FFFFFF",
-      black: "#424242",
+      white: "rgb(var(--color-white) / <alpha-value>)",
+      black: "rgb(var(--color-black) / <alpha-value>)",
       gray: {
-        10: "#F8F8F8",
-        20: "#E9E9E9",
-        30: "#BCBCBC",
-        50: "#7C7C7C",
+        10: "rgb(var(--color-gray-10) / <alpha-value>)",
+        20: "rgb(var(--color-gray-20) / <alpha-value>)",
+        30: "rgb(var(--color-gray-30) / <alpha-value>)",
+        50: "rgb(var(--color-gray-50) / <alpha-value>)",
       },
       transparent: "transparent",
       current: "currentColor",
+
+      theme: {
+        color: {
+          "body-bg": "var(--color-body-bg)",
+        },
+      },
     },
     spacing: {
       // Create spacing scale with rem units
@@ -52,26 +58,26 @@ module.exports = {
     fontSize: {
       ...flatten({
         "title-1": {
-          DEFAULT: [wildConfig.utils.pxRem(26), { lineHeight: 1.5, letterSpacing: "-0.025em" }],
-          desktop: [wildConfig.utils.pxRem(28), { lineHeight: 1.5, letterSpacing: "-0.025em" }],
+          DEFAULT: [pxUnitToRem(26), { lineHeight: 1.5, letterSpacing: "-0.025em" }],
+          desktop: [pxUnitToRem(28), { lineHeight: 1.5, letterSpacing: "-0.025em" }],
         },
         "title-2": {
-          DEFAULT: [wildConfig.utils.pxRem(26), { lineHeight: 1.5, letterSpacing: "-0.025em" }],
+          DEFAULT: [pxUnitToRem(26), { lineHeight: 1.5, letterSpacing: "-0.025em" }],
         },
         "title-3": {
-          DEFAULT: [wildConfig.utils.pxRem(20), { lineHeight: 1.5, letterSpacing: "-0.025em" }],
+          DEFAULT: [pxUnitToRem(20), { lineHeight: 1.5, letterSpacing: "-0.025em" }],
         },
         "body-4": {
-          DEFAULT: [wildConfig.utils.pxRem(18), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
+          DEFAULT: [pxUnitToRem(18), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
         },
         "body-3": {
-          DEFAULT: [wildConfig.utils.pxRem(16), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
+          DEFAULT: [pxUnitToRem(16), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
         },
         "body-2": {
-          DEFAULT: [wildConfig.utils.pxRem(14), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
+          DEFAULT: [pxUnitToRem(14), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
         },
         "body-1": {
-          DEFAULT: [wildConfig.utils.pxRem(12), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
+          DEFAULT: [pxUnitToRem(12), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
         },
       }),
     },

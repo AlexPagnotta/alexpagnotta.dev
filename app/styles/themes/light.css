@@ -1,0 +1,3 @@
+:root.theme-light {
+  --color-body-bg: rgb(var(--color-white));
+}
