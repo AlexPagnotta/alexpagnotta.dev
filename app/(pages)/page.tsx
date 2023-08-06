@@ -1,8 +1,11 @@
+import { Text } from "~/features/ui/text";
+
 export default function Home() {
   return (
     <main className="h-full bg-red-400">
-      <h1 className="font-serif text-gray-50">Test Test</h1>
-      <p className="font-sans text-gray-10">Test Test</p>
+      <Text size="title-1" asChild>
+        <h1>Test Test</h1>
+      </Text>
     </main>
   );
 }
