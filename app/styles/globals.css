@@ -14,6 +14,18 @@ body {
   height: 100%;
 }
 
+/* Focus Outline */
+
+/* Disable focus outline when focus comes from mouse/touch interactions */
+:focus:not(:focus-visible) {
+  @apply outline-none;
+}
+
+/* Custom style for keyboard interaction focus */
+:focus-visible {
+  @apply outline-none ring-4 ring-theme-color-focus-outline; /* TODO: Temp, replace with better style */
+}
+
 @tailwind components;
 @tailwind utilities;
 

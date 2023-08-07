@@ -31,6 +31,9 @@ module.exports = {
       theme: {
         color: {
           "body-bg": "var(--color-body-bg)",
+          "text-primary": "var(--color-text-primary)",
+          "text-secondary": "var(--color-text-secondary)",
+          "focus-outline": "var(--color-focus-outline)",
         },
       },
     },

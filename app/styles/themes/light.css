@@ -1,3 +1,8 @@
 :root.theme-light {
   --color-body-bg: rgb(var(--color-white));
+
+  --color-text-primary: rgb(var(--color-black));
+  --color-text-secondary: rgb(var(--color-gray-50));
+
+  --color-focus-outline: rgb(var(--color-black));
 }
