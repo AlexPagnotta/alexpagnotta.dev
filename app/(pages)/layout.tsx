@@ -2,6 +2,7 @@ import { type Metadata } from "next";
 import localFont from "next/font/local";
 import { type ReactNode } from "react";
 
+import "../styles/variables.css";
 import "../styles/colors.css";
 import "../styles/themes/light.css";
 import "../styles/globals.css";
