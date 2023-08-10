@@ -3,6 +3,7 @@
 
   --color-text-primary: rgb(var(--color-black));
   --color-text-secondary: rgb(var(--color-gray-50));
+  --color-text-tertiary: rgb(var(--color-gray-30));
 
   --color-focus-outline: rgb(var(--color-black));
 }

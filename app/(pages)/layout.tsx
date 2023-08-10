@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import { type ReactNode } from "react";
 
 import { Container } from "~/features/ui/container";
+import { Footer } from "~/features/ui/footer";
 
 import "../styles/variables.css";
 import "../styles/colors.css";
@@ -91,7 +92,7 @@ export const RootLayout = ({ children }: Props) => {
           <header className="grid-in-header">Header</header>
           <main className="grid-in-main"> {children}</main>
 
-          <footer className="grid-in-footer">Footer</footer>
+          <Footer className="grid-in-footer" />
         </Container>
       </body>
     </html>

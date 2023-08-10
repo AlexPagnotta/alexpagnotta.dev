@@ -34,6 +34,7 @@ module.exports = {
           "body-bg": "var(--color-body-bg)",
           "text-primary": "var(--color-text-primary)",
           "text-secondary": "var(--color-text-secondary)",
+          "text-tertiary": "var(--color-text-tertiary)",
           "focus-outline": "var(--color-focus-outline)",
         },
       },
