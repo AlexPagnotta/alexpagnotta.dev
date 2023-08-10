@@ -1,3 +1,4 @@
+// import WildLogoSVG from "~/assets/svg/wild-logo.svg";
 import { Text } from "~/features/ui/text";
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
         <h1>
           Hello, I’m <span className="text-theme-color-text-primary">Alex Pagnotta</span>,{"\n"}a Frontend Developer
           from Italy.{"\n"}
+          {/* <WildLogoSVG className="inline-block w-36 text-theme-color-text-primary" /> TODO: Implement*/}
           <span className="hidden lg:inline">Currently building </span>
           <span className="lg:hidden">Building </span>
           things at Wild.
