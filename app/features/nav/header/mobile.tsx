@@ -10,8 +10,9 @@ export const MobileHeader = ({ className }: Props) => {
   return (
     <nav
       className={cx(
-        "flex gap-40 py-32 w-full overflow-auto scrollbar-none ",
-        "relative left-1/2 right-1/2 w-screen ml-[-50vw] px-[--container-side-spacing]",
+        "fixed z-header top-0 inset-x-0",
+        "flex justify-between items-center gap-40 w-full h-[--header-height] px-[--container-side-spacing]",
+        "overflow-auto scrollbar-none backdrop-blur-md bg-white bg-opacity-50",
         className
       )}
     >

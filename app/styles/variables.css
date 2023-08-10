@@ -1,11 +1,15 @@
 :root {
+  --header-height: 9.6rem;
+
   --container-max-width: calc(76.8rem + var(--container-side-spacing) * 2);
   --container-side-spacing: 28px;
-  --container-root-top-spacing: 0px;
+  --container-root-top-spacing: var(--header-height);
 }
 
 @media screen(lg) {
   :root {
+    --header-height: initial;
+
     --container-side-spacing: 28px;
     --container-root-top-spacing: 128px;
   }

@@ -95,7 +95,14 @@ module.exports = {
       md: "0.8rem",
       full: "9999px",
     },
+    backdropBlur: {
+      md: "10px",
+    },
     extend: {
+      zIndex: {
+        header: 100,
+      },
+
       gridTemplateAreas: {
         "root-layout-lg": ["header . main", ". . .", "footer footer footer"],
         "root-layout": ["header", ".", "main", ".", "footer"],
@@ -108,6 +115,7 @@ module.exports = {
         "root-layout-lg": "auto 9.6rem auto",
         "root-layout": "auto 3.2rem auto 6.4rem auto",
       },
+
       screens: {
         "hover-supported": { raw: "(hover: hover)" },
       },
