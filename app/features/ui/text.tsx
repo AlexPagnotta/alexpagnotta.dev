@@ -7,16 +7,16 @@ type Props = ComponentPropsWithoutRef<"span"> &
     asChild?: boolean;
   };
 
-export const textStyles = cva(["font-sans"], {
+export const textStyles = cva("", {
   variants: {
     size: {
-      "title-1": "text-title-1 lg:text-title-1-desktop",
-      "title-2": "text-title-2",
-      "title-3": "text-title-3",
-      "body-4": "text-body-4",
-      "body-3": "text-body-3",
-      "body-2": "text-body-2",
-      "body-1": "text-body-1",
+      "title-1": "text-title-1 lg:text-title-1-desktop font-serif",
+      "title-2": "text-title-2 font-serif",
+      "title-3": "text-title-3 font-serif",
+      "body-4": "text-body-4 font-sans",
+      "body-3": "text-body-3 font-sans",
+      "body-2": "text-body-2 font-sans",
+      "body-1": "text-body-1 font-sans",
     },
     weight: {
       light: "font-light",

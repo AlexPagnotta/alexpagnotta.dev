@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const gridAreasPlugin = require("@savvywombat/tailwindcss-grid-areas");
 const addPlugin = require("tailwindcss/plugin");
 
 const {
@@ -94,6 +95,18 @@ module.exports = {
       full: "9999px",
     },
     extend: {
+      gridTemplateAreas: {
+        "root-layout-lg": ["header . main", ". . .", "footer footer footer"],
+        "root-layout": ["header", ".", "main", ".", "footer"],
+      },
+      gridTemplateColumns: {
+        "root-layout-lg": "max-content 96px 1fr",
+        "root-layout": "1fr",
+      },
+      gridTemplateRows: {
+        "root-layout-lg": "auto 9.6rem auto",
+        "root-layout": "auto 3.2rem auto 6.4rem auto",
+      },
       screens: {
         "hover-supported": { raw: "(hover: hover)" },
       },
@@ -107,5 +120,9 @@ module.exports = {
         },
       });
     }),
+    gridAreasPlugin,
   ],
+  variants: {
+    gridTemplateAreas: ["responsive"],
+  },
 };

@@ -1,4 +1,12 @@
 :root {
-  --container-max-width: 76.8rem;
-  --container-padding: 28px;
+  --container-max-width: calc(76.8rem + var(--container-side-spacing) * 2);
+  --container-side-spacing: 28px;
+  --container-root-top-spacing: 0px;
+}
+
+@media screen(lg) {
+  :root {
+    --container-side-spacing: 28px;
+    --container-root-top-spacing: 128px;
+  }
 }

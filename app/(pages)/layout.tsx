@@ -1,6 +1,9 @@
+import { cx } from "class-variance-authority";
 import { type Metadata } from "next";
 import localFont from "next/font/local";
 import { type ReactNode } from "react";
+
+import { Container } from "~/features/ui/container";
 
 import "../styles/variables.css";
 import "../styles/colors.css";
@@ -74,10 +77,23 @@ const merriweatherSansFont = localFont({
   variable: "--font-merriweather-sans",
 });
 
+const rootContainerStyle = [
+  "grid grid-areas-root-layout grid-cols-root-layout grid-rows-root-layout",
+  "lg:grid-areas-root-layout-lg lg:grid-cols-root-layout-lg lg:grid-rows-root-layout-lg",
+  "pt-[--container-root-top-spacing]",
+];
+
 export const RootLayout = ({ children }: Props) => {
   return (
     <html lang="en" className={`${loraFont.variable} ${merriweatherSansFont.variable} theme-light`}>
-      <body>{children}</body>
+      <body>
+        <Container className={cx(rootContainerStyle)}>
+          <header className="grid-in-header">Header</header>
+          <main className="grid-in-main"> {children}</main>
+
+          <footer className="grid-in-footer">Footer</footer>
+        </Container>
+      </body>
     </html>
   );
 };
