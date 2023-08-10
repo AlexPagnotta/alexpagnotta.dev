@@ -30,6 +30,21 @@ body {
 @tailwind utilities;
 
 @layer utilities {
+  /* Hide scrollbar utility */
+
+  /* Chrome, Safari and Opera */
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* IE, Edge and Firefox */
+  .scrollbar-none {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  /* Other utilities */
+
   .tap-highlight-none {
     -webkit-tap-highlight-color: transparent;
   }

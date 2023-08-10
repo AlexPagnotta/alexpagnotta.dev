@@ -3,6 +3,7 @@ import { type Metadata } from "next";
 import localFont from "next/font/local";
 import { type ReactNode } from "react";
 
+import { Header } from "~/features/nav/header/header";
 import { Container } from "~/features/ui/container";
 import { Footer } from "~/features/ui/footer";
 
@@ -89,7 +90,8 @@ export const RootLayout = ({ children }: Props) => {
     <html lang="en" className={`${loraFont.variable} ${merriweatherSansFont.variable} theme-light`}>
       <body>
         <Container className={cx(rootContainerStyle)}>
-          <header className="grid-in-header">Header</header>
+          <Header className="grid-in-header" />
+
           <main className="grid-in-main"> {children}</main>
 
           <Footer className="grid-in-footer" />

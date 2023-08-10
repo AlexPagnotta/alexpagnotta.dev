@@ -101,8 +101,8 @@ module.exports = {
         "root-layout": ["header", ".", "main", ".", "footer"],
       },
       gridTemplateColumns: {
-        "root-layout-lg": "max-content 96px 1fr",
-        "root-layout": "1fr",
+        "root-layout-lg": "max-content 96px minmax(0, 1fr)",
+        "root-layout": "minmax(0, 1fr)",
       },
       gridTemplateRows: {
         "root-layout-lg": "auto 9.6rem auto",

@@ -7,8 +7,8 @@ type LinkProps = React.ComponentPropsWithoutRef<"a"> & {
   newWindow?: boolean;
 };
 
-type Variants = VariantProps<typeof linkStyles>;
-type Props = NextLinkProps & LinkProps & Variants;
+export type LinkVariants = VariantProps<typeof linkStyles>;
+type Props = NextLinkProps & LinkProps & LinkVariants;
 
 export const linkStyles = cva(
   [
@@ -26,19 +26,6 @@ export const linkStyles = cva(
     defaultVariants: {
       underline: false,
     },
-  }
-);
-
-export const LinkButton = React.forwardRef(
-  (
-    { underline, className, children, ...rest }: Variants & React.ComponentPropsWithRef<"button">,
-    ref: React.ForwardedRef<HTMLButtonElement>
-  ) => {
-    return (
-      <button ref={ref} className={linkStyles({ underline, className })} {...rest}>
-        {children}
-      </button>
-    );
   }
 );
 
@@ -67,4 +54,3 @@ export const Link = React.forwardRef(
 );
 
 Link.displayName = "Link";
-LinkButton.displayName = "LinkButton";
