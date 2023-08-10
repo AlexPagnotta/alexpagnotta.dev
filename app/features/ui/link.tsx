@@ -2,17 +2,23 @@ import { type VariantProps, cva } from "class-variance-authority";
 import NextLink from "next/link";
 import React from "react";
 
+import { Icon } from "./icon/icon-component";
+
+export type LinkBaseProps = VariantProps<typeof linkStyles> & {
+  children?: React.ReactNode;
+  arrowIcon?: React.ReactNode;
+};
+
 type NextLinkProps = Omit<React.ComponentPropsWithoutRef<typeof NextLink>, "href" | "passHref" | "legacyBehavior">;
 type LinkProps = React.ComponentPropsWithoutRef<"a"> & {
   newWindow?: boolean;
 };
 
-export type LinkVariants = VariantProps<typeof linkStyles>;
-type Props = NextLinkProps & LinkProps & LinkVariants;
+type Props = LinkBaseProps & NextLinkProps & LinkProps;
 
 export const linkStyles = cva(
   [
-    "inline-flex items-center",
+    "inline-flex items-center gap-6",
     "transition-colors duration-200 ease-out [&:hover:not(:disabled)]:text-theme-color-text-primary",
     "tap-highlight-none disabled:cursor-not-allowed disabled:opacity-60", // LinkButton Style
   ],
@@ -30,7 +36,10 @@ export const linkStyles = cva(
 );
 
 export const Link = React.forwardRef(
-  ({ href, newWindow, underline, className, children, ...rest }: Props, ref: React.ForwardedRef<HTMLAnchorElement>) => {
+  (
+    { href, newWindow, underline, arrowIcon, className, children, ...rest }: Props,
+    ref: React.ForwardedRef<HTMLAnchorElement>
+  ) => {
     const isInternalLink = href && href.startsWith("/");
 
     const newWindowAttrs = !isInternalLink && newWindow ? { target: "_blank", rel: "noopener noreferrer" } : {};
@@ -40,17 +49,26 @@ export const Link = React.forwardRef(
     if (isInternalLink) {
       return (
         <NextLink href={href} {...rest} ref={ref} className={style}>
-          {children}
+          <LinkContent arrowIcon={arrowIcon}>{children}</LinkContent>
         </NextLink>
       );
     }
 
     return (
       <a href={href} {...rest} {...newWindowAttrs} ref={ref} className={style}>
-        {children}
+        <LinkContent arrowIcon={arrowIcon}>{children}</LinkContent>
       </a>
     );
   }
 );
+
+export const LinkContent = ({ children, arrowIcon }: Pick<LinkBaseProps, "arrowIcon" | "children">) => {
+  return (
+    <>
+      {children}
+      {arrowIcon ? <Icon name="arrowTopLeft" className="w-10 shrink-0" /> : null}
+    </>
+  );
+};
 
 Link.displayName = "Link";

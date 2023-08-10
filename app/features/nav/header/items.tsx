@@ -73,7 +73,9 @@ export const HeaderInfoItems = ({ className }: Props) => {
       {InfoItems.map((item) => (
         <li key={item.key}>
           <Text size="body-4" className="text-theme-color-text-secondary" asChild>
-            <Link href={item.href}>{item.label}</Link>
+            <Link href={item.href} arrowIcon>
+              {item.label}
+            </Link>
           </Text>
         </li>
       ))}
