@@ -92,7 +92,7 @@ export const RootLayout = ({ children }: Props) => {
         <Container className={cx(rootContainerStyle)}>
           <Header className="grid-in-header" />
 
-          <main className="grid-in-main"> {children}</main>
+          <main className="grid-in-main">{children}</main>
 
           <Footer className="grid-in-footer" />
         </Container>
