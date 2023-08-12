@@ -6,4 +6,6 @@
   --color-text-tertiary: rgb(var(--color-gray-30));
 
   --color-focus-outline: rgb(var(--color-black));
+
+  --color-card-bg: rgb(var(--color-gray-10));
 }

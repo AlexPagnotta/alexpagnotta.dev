@@ -1,6 +1,7 @@
 import { cx } from "class-variance-authority";
 
 import WildLogoSVG from "~/assets/svg/wild-logo.svg";
+import { BaseCard } from "~/features/card/base";
 import { Text } from "~/features/ui/text";
 
 export default function Home() {
@@ -21,7 +22,11 @@ export default function Home() {
       <div className="w-full flex justify-center lg:justify-end flex-wrap gap-24">
         {[...Array(4)].map((_, i) => (
           <div key={i} className="shrink-0 w-full max-w-[35rem] sm:w-272 h-272">
-            <div className="w-full h-full bg-gray-10 rounded-md" /> {/* TODO: Replace with card component */}
+            <BaseCard title="Title" infoText="Blog • May 2023" className="w-full h-full" href="/">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget ultricies risus, sodales
+              facilisis ligula ipsum dolor sit amet, consectetur adipiscing eliy Suspendisse. adipiscing elit.
+              Suspendisse eget ultricies risus
+            </BaseCard>
           </div>
         ))}
       </div>

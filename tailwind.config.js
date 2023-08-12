@@ -36,6 +36,7 @@ module.exports = {
           "text-secondary": "var(--color-text-secondary)",
           "text-tertiary": "var(--color-text-tertiary)",
           "focus-outline": "var(--color-focus-outline)",
+          "card-bg": "var(--color-card-bg)",
         },
       },
     },
