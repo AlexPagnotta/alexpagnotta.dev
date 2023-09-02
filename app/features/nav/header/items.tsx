@@ -14,17 +14,17 @@ const NavItems = [
   {
     key: "blog",
     label: "Blog",
-    href: "/",
+    href: "/blog",
   },
   {
     key: "projects",
     label: "Projects",
-    href: "/",
+    href: "/projects",
   },
   {
     key: "other",
     label: "Other",
-    href: "/",
+    href: "/other",
   },
 ] as const;
 
@@ -57,8 +57,6 @@ export const HeaderNavItems = ({ className }: Props) => {
       {NavItems.map((item) => (
         <li key={item.key}>
           <Text size="title-3" className="text-theme-color-text-secondary" asChild>
-            {/* TODO: Handle items filter on homepage using url params, thos way we avoid having a state in the parent and
-            we can use server component */}
             <Link href={item.href}>{item.label}</Link>
           </Text>
         </li>
