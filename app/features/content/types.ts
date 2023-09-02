@@ -1,7 +1,10 @@
+import { type ShowcaseContentCardName } from "./card/showcase-cards/map";
+
 export enum ContentType {
   POST = "post",
   PROJECT = "project",
 }
+
 /* Frontmatter */
 
 type BaseFrontmatter = {
@@ -9,11 +12,10 @@ type BaseFrontmatter = {
   title: string;
   slug: string;
   date: string;
-};
+} & ({ showcase: ShowcaseContentCardName } | { showcase?: never; excerpt: string }); // Excerpt is not needed when a showcase card is displayed
 
 type PostFrontmatter = BaseFrontmatter & {
   type: ContentType.POST;
-  excerpt: string;
 };
 
 type ProjectFrontmatter = BaseFrontmatter & {

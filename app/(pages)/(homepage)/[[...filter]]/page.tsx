@@ -1,7 +1,8 @@
 import { cx } from "class-variance-authority";
 
 import WildLogoSVG from "~/assets/svg/wild-logo.svg";
-import { BaseCard } from "~/features/card/base";
+import { BaseContentCard } from "~/features/content/card/base";
+import { ShowcaseContentCard } from "~/features/content/card/showcase";
 import { ContentType } from "~/features/content/types";
 import { getAllContentFrontMatters } from "~/features/content/utils.server";
 import { Text } from "~/features/ui/text";
@@ -47,7 +48,7 @@ export const Home = async ({ params }: Props) => {
           <span className="hidden lg:inline">Currently building </span>
           <span className="lg:hidden">Building </span>
           <span className="whitespace-nowrap">
-            things at <span className="inline-block w-56" />
+            things at <span className="inline-block w-60" />
             <WildLogoSVG className={cx("h-[0.8em] text-theme-color-text-primary", "absolute right-8 bottom-10")} />.
           </span>
         </h1>
@@ -55,11 +56,13 @@ export const Home = async ({ params }: Props) => {
       <div className={cx(contentItemGridStyles)}>
         {contentItems.map((contentItem) => (
           <div key={contentItem.id} className="md:aspect-square">
-            <BaseCard title={contentItem.title} infoText="Blog • May 2023" href="/">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget ultricies risus, sodales
-              facilisis ligula ipsum dolor sit amet, consectetur adipiscing eliy Suspendisse. adipiscing elit.
-              Suspendisse eget ultricies risus
-            </BaseCard>
+            {contentItem.showcase ? (
+              <ShowcaseContentCard name={contentItem.showcase} href={contentItem.slug} />
+            ) : (
+              <BaseContentCard title={contentItem.title} infoText="Blog • May 2023" href={contentItem.slug}>
+                {contentItem.excerpt}
+              </BaseContentCard>
+            )}
           </div>
         ))}
       </div>
