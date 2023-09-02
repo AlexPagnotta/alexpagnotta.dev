@@ -15,7 +15,7 @@ const cardStyles = ["p-32 flex flex-col rounded-md bg-theme-color-card-bg text-t
 
 export const BaseCard = ({ title, infoText, href, children, className }: Props) => {
   return (
-    <article className={className}>
+    <article className={cx("w-full h-full", className)}>
       <Link href={href}>
         <div className={cx(cardStyles)}>
           <Text size="title-2" asChild className="mb-16">

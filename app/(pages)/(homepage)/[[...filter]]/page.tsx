@@ -28,6 +28,11 @@ export const generateStaticParams = async () => {
 
 export const dynamicParams = false;
 
+const contentItemGridStyles = [
+  "w-full grid grid-cols-[minmax(0,35rem)] md:grid-cols-[27.2rem_27.2rem]",
+  "justify-center lg:justify-end gap-24",
+];
+
 export const Home = async ({ params }: Props) => {
   const filter = params.filter?.[0];
 
@@ -47,16 +52,13 @@ export const Home = async ({ params }: Props) => {
           </span>
         </h1>
       </Text>
-      <div className="w-full flex justify-center lg:justify-end flex-wrap gap-24">
+      <div className={cx(contentItemGridStyles)}>
         {contentItems.map((contentItem) => (
-          <div key={contentItem.id} className="shrink-0 w-full max-w-[35rem] sm:w-272 h-272">
-            <BaseCard
-              title={contentItem.title}
-              infoText="Blog • May 2023"
-              className="w-full h-full"
-              href={contentItem.slug}
-            >
-              {contentItem.type === ContentType.POST ? contentItem.excerpt : ""}
+          <div key={contentItem.id} className="md:aspect-square">
+            <BaseCard title={contentItem.title} infoText="Blog • May 2023" href="/">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget ultricies risus, sodales
+              facilisis ligula ipsum dolor sit amet, consectetur adipiscing eliy Suspendisse. adipiscing elit.
+              Suspendisse eget ultricies risus
             </BaseCard>
           </div>
         ))}
