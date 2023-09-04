@@ -2,18 +2,28 @@ import { cx } from "class-variance-authority";
 
 import { Link } from "../../ui/link";
 import { Text } from "../../ui/text";
+import { formatContentCardDate } from "../dates";
+import { ContentType } from "../types";
 
 type Props = {
   title: string;
-  infoText: string;
+  type: ContentType;
+  date?: string;
   children: string;
   href: string;
   className?: string;
 };
 
+const contentTypeCategoryMap = {
+  [ContentType.POST]: "Blog",
+  [ContentType.PROJECT]: "Project",
+};
+
 const cardStyles = ["p-32 h-full flex-1 flex flex-col rounded-md bg-theme-color-card-bg text-theme-color-text-primary"];
 
-export const BaseContentCard = ({ title, infoText, href, children, className }: Props) => {
+export const BaseContentCard = ({ title, type, date, href, children, className }: Props) => {
+  const formattedDate = date && formatContentCardDate(date);
+
   return (
     <article className={cx("w-full h-full", className)}>
       <Link href={href} className="w-full h-full">
@@ -25,7 +35,7 @@ export const BaseContentCard = ({ title, infoText, href, children, className }: 
             <p>{children}</p>
           </Text>
           <Text size="body-1" className="text-theme-color-text-secondary">
-            {infoText}
+            {[contentTypeCategoryMap[type], formattedDate].filter(Boolean).join(" • ")}
           </Text>
         </div>
       </Link>

@@ -59,7 +59,12 @@ export const Home = async ({ params }: Props) => {
             {contentItem.showcase ? (
               <ShowcaseContentCard name={contentItem.showcase} href={contentItem.slug} />
             ) : (
-              <BaseContentCard title={contentItem.title} infoText="Blog • May 2023" href={contentItem.slug}>
+              <BaseContentCard
+                title={contentItem.title}
+                type={contentItem.type}
+                date={contentItem.date}
+                href={contentItem.slug}
+              >
                 {contentItem.excerpt}
               </BaseContentCard>
             )}
