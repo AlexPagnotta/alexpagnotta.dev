@@ -29,7 +29,7 @@ export type ContentFrontmatter = PostFrontmatter | ProjectFrontmatter;
 /* Content */
 
 export type BaseContent = {
-  code: string;
+  markdown: string;
   slug: string;
 };
 

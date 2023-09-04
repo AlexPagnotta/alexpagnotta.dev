@@ -21,31 +21,34 @@ const pathContentTypeMap = {
   projects: ContentType.PROJECT,
 } as const;
 
-const getAllContentPaths = async (type?: ContentType) => {
+const getAllContentFullPaths = async (type?: ContentType) => {
   return glob(`app/${CONTENT_FOLDER_NAME}/${type ? contentTypePathMap[type] + "/" : ""}**/${CONTENT_FILENAME}`);
 };
 
-const extractSlugFromPath = (path: string) => path.replace(`app/content`, "").replace("/index.mdx", "");
+const extractPathFromFullPath = (path: string) => path.replace(`app/${CONTENT_FOLDER_NAME}/`, "");
 
-const getTypeFromSlug = (slug: string) => {
-  const path = slug.split("/")[1] as keyof typeof pathContentTypeMap;
-  return pathContentTypeMap[path];
+const extractSlugFromPath = (path: string) => path.split("/")[1] as string;
+
+const getTypeFromPath = (path: string) => {
+  const contentTypeFolder = path.split("/")[0] as keyof typeof pathContentTypeMap;
+  return pathContentTypeMap[contentTypeFolder];
 };
 
-const generateIdFromSlug = (slug: string) => {
-  const type = getTypeFromSlug(slug);
-  const folderName = slug.split("/")[2];
-  return `${type}-${folderName}`;
-};
+const generateIdFromSlug = (type: ContentType, slug: string) => `${type}-${slug}`;
 
 /**
  * Get the slug of all the content mdx files
  * @param type The type of the content, if not provided, all the content paths will be returned
  */
 export const getAllContentSlugs = async (type?: ContentType) => {
-  const paths = await getAllContentPaths(type);
+  const fullPaths = await getAllContentFullPaths(type);
 
-  return paths.map(extractSlugFromPath);
+  return fullPaths.map((fullPath) => {
+    const path = extractPathFromFullPath(fullPath);
+    const slug = extractSlugFromPath(path);
+    const type = getTypeFromPath(path);
+    return { slug, type };
+  });
 };
 
 /**
@@ -53,21 +56,23 @@ export const getAllContentSlugs = async (type?: ContentType) => {
  * @param type The type of the content, if not provided, all the content paths will be returned
  */
 export const getAllContentFrontMatters = async <T extends ContentType>(type?: T) => {
-  const paths = await getAllContentPaths(type);
+  const fullPaths = await getAllContentFullPaths(type);
 
-  const contentFrontmatters = paths.map((file) => {
-    const fileSource = fs.readFileSync(path.join(process.cwd(), file), "utf-8");
+  const contentFrontmatters = fullPaths.map((filePath) => {
+    const fileSource = fs.readFileSync(path.join(process.cwd(), filePath), "utf-8");
 
     const { data } = matter(fileSource);
 
-    const slug = extractSlugFromPath(file);
-    const type = getTypeFromSlug(slug);
+    const contentPath = extractPathFromFullPath(filePath);
+    const type = getTypeFromPath(contentPath);
+    const slug = extractSlugFromPath(contentPath);
+    const id = generateIdFromSlug(type, slug);
 
     return {
       ...data,
       slug,
       type,
-      id: generateIdFromSlug(slug),
+      id,
     } as ContentFrontmatter;
   });
 
@@ -105,9 +110,9 @@ export const getContentBySlug = async <T extends ContentType>(type: T, slug: str
   });
 
   return {
-    code: mdxData.code,
-    frontmatter: { ...mdxData.frontmatter, id: generateIdFromSlug(slug) },
-    type: getTypeFromSlug(slug),
+    markdown: mdxData.code,
+    frontmatter: { ...mdxData.frontmatter, id: generateIdFromSlug(type, slug) },
+    type,
     slug,
   } as Content;
 };
