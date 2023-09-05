@@ -19,7 +19,6 @@ type Props = LinkBaseProps & NextLinkProps & LinkProps;
 export const linkStyles = cva(
   [
     "inline-flex items-center gap-6",
-    "transition-colors duration-200 ease-out [&:hover:not(:disabled)]:text-theme-color-text-primary",
     "tap-highlight-none disabled:cursor-not-allowed disabled:opacity-60", // LinkButton Style
   ],
   {

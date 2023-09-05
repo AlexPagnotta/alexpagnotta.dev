@@ -1,6 +1,7 @@
 import { cx } from "class-variance-authority";
 
-import { HeaderInfoItems, HeaderNavItems } from "./items";
+import { HeaderInfoItems } from "./items/info";
+import { HeaderNavItems } from "./items/nav";
 
 type Props = {
   className?: string;
