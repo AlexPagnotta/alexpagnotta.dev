@@ -30,7 +30,6 @@ export type ContentFrontmatter = PostFrontmatter | ProjectFrontmatter;
 
 export type BaseContent = {
   markdown: string;
-  slug: string;
 };
 
 export type PostContent = BaseContent & {

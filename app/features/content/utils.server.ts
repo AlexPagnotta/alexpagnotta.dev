@@ -111,8 +111,6 @@ export const getContentBySlug = async <T extends ContentType>(type: T, slug: str
 
   return {
     markdown: mdxData.code,
-    frontmatter: { ...mdxData.frontmatter, id: generateIdFromSlug(type, slug) },
-    type,
-    slug,
+    frontmatter: { ...mdxData.frontmatter, id: generateIdFromSlug(type, slug), type, slug },
   } as Content;
 };
