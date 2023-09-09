@@ -90,23 +90,6 @@ export const getContentBySlug = async <T extends ContentType>(type: T, slug: str
   const mdxData = await bundleMDX({
     source: contentSource,
     cwd: contentFolder,
-    // TODO: Add options
-    // mdxOptions(options) {
-    //   options.rehypePlugins = [
-    //     ...(options.rehypePlugins ?? []),
-    //     [
-    //       rehypePrettyCode,
-    //       {
-    //         theme,
-    //         onVisitHighlightedLine(node) {
-    //           // Each line node by default has `class="line"`.
-    //           node.properties.className.push("highlighted");
-    //         },
-    //       },
-    //     ],
-    //   ];
-    //   return options;
-    // },
   });
 
   return {

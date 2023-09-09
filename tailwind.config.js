@@ -2,6 +2,7 @@
 const gridAreasPlugin = require("@savvywombat/tailwindcss-grid-areas");
 const addPlugin = require("tailwindcss/plugin");
 
+const typographyConfig = require("./tailwind.config.typography.js");
 const {
   baseFontSizePx,
   baseBrowserFontSizePx,
@@ -16,6 +17,7 @@ const {
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
+  presets: [typographyConfig],
   theme: {
     colors: {
       white: "rgb(var(--color-white) / <alpha-value>)",
@@ -69,21 +71,27 @@ module.exports = {
         },
         "title-2": {
           DEFAULT: [pxUnitToRem(26), { lineHeight: 1.5, letterSpacing: "-0.025em" }],
+          desktop: [pxUnitToRem(26), { lineHeight: 1.5, letterSpacing: "-0.025em" }],
         },
         "title-3": {
           DEFAULT: [pxUnitToRem(20), { lineHeight: 1.5, letterSpacing: "-0.025em" }],
+          desktop: [pxUnitToRem(20), { lineHeight: 1.5, letterSpacing: "-0.025em" }],
         },
         "body-4": {
           DEFAULT: [pxUnitToRem(18), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
+          desktop: [pxUnitToRem(18), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
         },
         "body-3": {
           DEFAULT: [pxUnitToRem(16), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
+          desktop: [pxUnitToRem(16), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
         },
         "body-2": {
           DEFAULT: [pxUnitToRem(14), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
+          desktop: [pxUnitToRem(14), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
         },
         "body-1": {
           DEFAULT: [pxUnitToRem(12), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
+          desktop: [pxUnitToRem(12), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
         },
       }),
     },

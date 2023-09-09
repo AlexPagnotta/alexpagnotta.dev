@@ -15,7 +15,7 @@ export const ContentBody = ({ markdown, className }: Props) => {
   const Content = React.useMemo(() => getMDXComponent(markdown), [markdown]);
 
   return (
-    <div className={cx("text-justify", className)}>
+    <div className={cx("prose lg:prose-lg text-justify", className)}>
       <Content
       //   components={{
       //     h2: Heading,

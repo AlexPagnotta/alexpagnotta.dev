@@ -11,12 +11,12 @@ export const textStyles = cva("", {
   variants: {
     size: {
       "title-1": "text-title-1 lg:text-title-1-desktop font-serif font-regular",
-      "title-2": "text-title-2 font-serif font-regular",
-      "title-3": "text-title-3 font-serif font-regular",
-      "body-4": "text-body-4 font-sans font-light",
-      "body-3": "text-body-3 font-sans font-light",
-      "body-2": "text-body-2 font-sans font-light",
-      "body-1": "text-body-1 font-sans font-light",
+      "title-2": "text-title-2 lg:text-title-2-desktop font-serif font-regular",
+      "title-3": "text-title-3 lg:text-title-3-desktop font-serif font-regular",
+      "body-4": "text-body-4 lg:text-body-4-desktop font-sans font-light",
+      "body-3": "text-body-3 lg:text-body-3-desktop font-sans font-light",
+      "body-2": "text-body-2 lg:text-body-2-desktop font-sans font-light",
+      "body-1": "text-body-1 lg:text-body-1-desktop font-sans font-light",
     },
     weight: {
       light: "font-light",
