@@ -11,7 +11,23 @@ module.exports = {
         return {
           // Update base font settings with values from config
           DEFAULT: {
-            css: { fontSize: textBody3FontSize, ...body3Options },
+            css: {
+              fontSize: textBody3FontSize,
+              ...body3Options,
+              "h1, h2, h3, h4, h5": {
+                fontWeight: theme("fontWeight.regular"),
+              },
+              a: {
+                fontWeight: theme("fontWeight.regular"),
+              },
+              blockquote: {
+                fontWeight: theme("fontWeight.regular"),
+              },
+              strong: {
+                fontWeight: theme("fontWeight.regular"),
+              },
+              // TODO: Style code blocks or replace with Shiki etc.
+            },
           },
           lg: { css: { fontSize: textBody3FontSizeDesktop, ...body3OptionsDesktop } },
         };
