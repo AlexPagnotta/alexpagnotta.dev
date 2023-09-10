@@ -51,7 +51,7 @@ export const Home = async ({ params }: Props) => {
       </Text>
       <div className={cx(contentItemGridStyles)}>
         {contentItems.map((contentItem) => {
-          const href = `${contentTypeCategoryMap[contentItem.type]}/${contentItem.slug}`;
+          const href = `/${contentTypeCategoryMap[contentItem.type]}/${contentItem.slug}`;
           return (
             <div key={contentItem.id} className="md:aspect-square">
               {contentItem.showcase ? (
