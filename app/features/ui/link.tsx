@@ -24,8 +24,8 @@ export const linkStyles = cva(
   {
     variants: {
       underline: {
-        true: "border-b-2 border-current",
-        false: "",
+        true: "underline decoration-2 underline-offset-4 decoration-current",
+        false: "no-underline",
       },
     },
     defaultVariants: {
@@ -41,7 +41,7 @@ export const Link = React.forwardRef(
   ) => {
     const isInternalLink = href && href.startsWith("/");
 
-    const newWindowAttrs = !isInternalLink && newWindow ? { target: "_blank", rel: "noopener noreferrer" } : {};
+    const newWindowAttrs = !isInternalLink || newWindow ? { target: "_blank", rel: "noopener noreferrer" } : {};
 
     const style = linkStyles({ underline, className });
 

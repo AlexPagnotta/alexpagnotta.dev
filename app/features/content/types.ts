@@ -11,6 +11,7 @@ type BaseFrontmatter = {
   id: string;
   title: string;
   slug: string;
+  assetsPath: string;
   date: string;
 } & ({ showcase: ShowcaseContentCardName } | { showcase?: never; excerpt: string }); // Excerpt is not needed when a showcase card is displayed
 

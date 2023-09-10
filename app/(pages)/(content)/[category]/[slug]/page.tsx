@@ -41,7 +41,7 @@ export const Content = async ({ params: { category, slug } }: Props) => {
         href={isProject ? frontmatter.url : undefined}
         className={cx(contentHeroStyles)}
       />
-      <ContentBody markdown={markdown} className="max-w-[48rem] mx-auto lg:ml-auto lg:mr-0" />
+      <ContentBody frontmatter={frontmatter} markdown={markdown} className="max-w-[48rem] mx-auto lg:ml-auto lg:mr-0" />
     </article>
   );
 };

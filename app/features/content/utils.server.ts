@@ -25,7 +25,9 @@ const getAllContentFullPaths = async (type?: ContentType) => {
   return glob(`app/${CONTENT_FOLDER_NAME}/${type ? contentTypePathMap[type] + "/" : ""}**/${CONTENT_FILENAME}`);
 };
 
-const extractPathFromFullPath = (path: string) => path.replace(`app/${CONTENT_FOLDER_NAME}/`, "");
+const extractPathFromFullPath = (path: string) => path.split(`app/${CONTENT_FOLDER_NAME}/`)[1] as string;
+
+const getAssetsPathFromPath = (path: string) => `${CONTENT_FOLDER_NAME}/${path}`;
 
 const extractSlugFromPath = (path: string) => path.split("/")[1] as string;
 
@@ -64,6 +66,7 @@ export const getAllContentFrontMatters = async <T extends ContentType>(type?: T)
     const { data } = matter(fileSource);
 
     const contentPath = extractPathFromFullPath(filePath);
+    const assetsPath = getAssetsPathFromPath(contentPath);
     const type = getTypeFromPath(contentPath);
     const slug = extractSlugFromPath(contentPath);
     const id = generateIdFromSlug(type, slug);
@@ -71,6 +74,7 @@ export const getAllContentFrontMatters = async <T extends ContentType>(type?: T)
     return {
       ...data,
       slug,
+      assetsPath,
       type,
       id,
     } as ContentFrontmatter;
@@ -92,8 +96,18 @@ export const getContentBySlug = async <T extends ContentType>(type: T, slug: str
     cwd: contentFolder,
   });
 
+  const id = generateIdFromSlug(type, slug);
+  const contentPath = extractPathFromFullPath(contentFolder);
+  const assetsPath = getAssetsPathFromPath(contentPath);
+
   return {
     markdown: mdxData.code,
-    frontmatter: { ...mdxData.frontmatter, id: generateIdFromSlug(type, slug), type, slug },
+    frontmatter: {
+      ...mdxData.frontmatter,
+      id,
+      type,
+      slug,
+      assetsPath,
+    },
   } as Content;
 };
