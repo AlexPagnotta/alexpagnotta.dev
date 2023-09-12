@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useSelectedLayoutSegment } from "next/navigation";
 
 import { headerItemLinkStyle } from "./style";
 
@@ -36,11 +36,12 @@ const NavItems = [
 
 export const HeaderNavItems = ({ className }: Props) => {
   const pathname = usePathname();
+  const pathnameSegment = `/${pathname.split("/")[1] || ""}`;
 
   return (
     <div className={className}>
       {NavItems.map((item) => {
-        const isActive = pathname === item.href;
+        const isActive = pathnameSegment === item.href;
 
         return (
           <li key={item.key}>
