@@ -27,11 +27,12 @@ const NavItems = [
     label: "Projects",
     href: "/projects",
   },
-  {
-    key: "other",
-    label: "Other",
-    href: "/other",
-  },
+  // TODO: Reimplement
+  // {
+  //   key: "other",
+  //   label: "Other",
+  //   href: "/other",
+  // },
 ] as const;
 
 export const HeaderNavItems = ({ className }: Props) => {
