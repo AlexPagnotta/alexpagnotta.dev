@@ -1,5 +1,6 @@
 import { headerItemLinkStyle } from "./style";
 
+import { siteConfig } from "~/config";
 import { Link } from "~/features/ui/link";
 import { Text } from "~/features/ui/text";
 
@@ -11,22 +12,22 @@ const InfoItems = [
   {
     key: "github",
     label: "Github",
-    href: "/",
+    href: siteConfig.github,
   },
   {
     key: "linkedin",
     label: "Linkedin",
-    href: "/",
+    href: siteConfig.linkedin,
   },
   {
     key: "cv",
     label: "CV",
-    href: "/",
+    href: siteConfig.cvUrl,
   },
   {
     key: "contact",
     label: "Contact",
-    href: "/",
+    href: `mailto:${siteConfig.email}`,
   },
 ] as const;
 
