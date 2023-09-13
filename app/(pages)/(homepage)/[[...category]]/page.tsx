@@ -54,7 +54,7 @@ export const Home = async ({ params }: Props) => {
         {contentItems.map((contentItem) => {
           const href = `/${contentTypeCategoryMap[contentItem.type]}/${contentItem.slug}`;
           return (
-            <div key={contentItem.id} className="md:aspect-square">
+            <div key={contentItem.id} className="min-h-[27.2rem] md:aspect-square md:min-h-0">
               {contentItem.showcase ? (
                 <ShowcaseContentCard
                   name={contentItem.showcase}
