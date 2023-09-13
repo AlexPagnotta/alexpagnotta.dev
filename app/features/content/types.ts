@@ -13,7 +13,7 @@ type BaseFrontmatter = {
   slug: string;
   assetsPath: string;
   date: string;
-} & ({ showcase: ShowcaseContentCardName } | { showcase?: never; excerpt: string }); // Excerpt is not needed when a showcase card is displayed
+} & ({ showcase: ShowcaseContentCardName; excerpt?: never } | { showcase?: never; excerpt: string }); // Excerpt is not needed when a showcase card is displayed
 
 type PostFrontmatter = BaseFrontmatter & {
   type: ContentType.POST;

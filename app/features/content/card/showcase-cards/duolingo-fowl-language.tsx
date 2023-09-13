@@ -6,11 +6,11 @@ import { Link } from "~/features/ui/link";
 
 type Props = ShowcaseContentCardProps;
 
-export const IkeaShowcaseContentCard = ({ href, className }: Props) => {
+export const DuolingoFowlLanguageShowcaseContentCard = ({ href, className }: Props) => {
   return (
     <article className={cx("w-full h-full", className)}>
       <Link href={href} className="w-full h-full">
-        <div className="w-full h-full bg-[#4E63AF] rounded-md" />
+        <div className="w-full h-full bg-[#7391ff] rounded-md" />
       </Link>
     </article>
   );

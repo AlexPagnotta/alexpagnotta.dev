@@ -9,6 +9,7 @@ import {
   type ContentCategory,
   contentTypeCategoryMap,
 } from "~/features/content/categories";
+import { ContentType } from "~/features/content/types";
 import { getAllContentFrontMatters } from "~/features/content/utils.server";
 import { Text } from "~/features/ui/text";
 
@@ -55,7 +56,10 @@ export const Home = async ({ params }: Props) => {
           return (
             <div key={contentItem.id} className="md:aspect-square">
               {contentItem.showcase ? (
-                <ShowcaseContentCard name={contentItem.showcase} href={href} />
+                <ShowcaseContentCard
+                  name={contentItem.showcase}
+                  href={contentItem.type === ContentType.PROJECT ? contentItem.url : href} // TODO: Replace with href in all cases when page detail is ready
+                />
               ) : (
                 <BaseContentCard title={contentItem.title} type={contentItem.type} date={contentItem.date} href={href}>
                   {contentItem.excerpt}
