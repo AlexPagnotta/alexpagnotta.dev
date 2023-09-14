@@ -4,8 +4,8 @@
   "license": "MIT",
   "private": true,
   "engines": {
-    "node": ">=16.17.0",
-    "npm": ">=8.0.0"
+    "node": ">=18.17.1",
+    "npm": ">=9.6.7"
   },
   "scripts": {
     "clean": "rimraf .next out node_modules/.cache",
