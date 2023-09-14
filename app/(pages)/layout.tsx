@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import { cx } from "class-variance-authority";
 import { type Metadata } from "next";
 import localFont from "next/font/local";
@@ -91,6 +92,7 @@ export const RootLayout = ({ children }: Props) => {
           <main className="grid-in-main">{children}</main>
 
           <Footer className="grid-in-footer" />
+          <Analytics />
         </Container>
       </body>
     </html>
