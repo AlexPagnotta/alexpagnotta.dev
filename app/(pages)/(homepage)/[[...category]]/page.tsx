@@ -31,7 +31,7 @@ const contentItemGridStyles = [
   "justify-center lg:justify-end gap-24",
 ];
 
-export const Home = async ({ params }: Props) => {
+const Home = async ({ params }: Props) => {
   const category = params.category?.[0];
 
   const contentItems = await getAllContentFrontMatters(category ? categoryContentTypeMap[category] : undefined);

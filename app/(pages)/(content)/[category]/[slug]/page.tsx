@@ -26,7 +26,7 @@ const contentHeroStyles = [
   "pl-[calc((var(--container-width)-48rem)/2-var(--container-side-spacing))] lg:pl-0", // Align left margin with content body on tablet bp
 ];
 
-export const Content = async ({ params: { category, slug } }: Props) => {
+const Content = async ({ params: { category, slug } }: Props) => {
   const contentType = categoryContentTypeMap[category];
 
   const { frontmatter, markdown } = await getContentBySlug(contentType, slug);

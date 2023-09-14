@@ -82,7 +82,7 @@ const rootContainerStyle = [
   "pt-[--container-root-top-spacing]",
 ];
 
-export const RootLayout = ({ children }: Props) => {
+const RootLayout = ({ children }: Props) => {
   return (
     <html lang="en" className={`${loraFont.variable} ${merriweatherSansFont.variable} theme-light`}>
       <body>
