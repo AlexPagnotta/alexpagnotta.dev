@@ -5,7 +5,7 @@ module.exports = {
     {
       files: [
         "**/*.d.ts",
-        "./app/**/{page,layout,not-found,error,global-error,route,template,default}.ts?(x)",
+        "./app/**/{page,layout,not-found,error,global-error,route,template,default,robot,sitemap}.ts?(x)",
         "./middleware.ts",
       ],
       rules: {

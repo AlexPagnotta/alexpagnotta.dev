@@ -3,6 +3,7 @@ import { type Metadata } from "next";
 import localFont from "next/font/local";
 import { type ReactNode } from "react";
 
+import { siteConfig } from "~/config";
 import { Header } from "~/features/nav/header/header";
 import { Container } from "~/features/ui/container";
 import { Footer } from "~/features/ui/footer";
@@ -17,31 +18,23 @@ type Props = {
 };
 
 // Metadata
-const SeoMetadata: Metadata = {
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.baseUrl),
   title: {
     default: "Alex Pagnotta",
     template: "%s | Alex Pagnotta",
   },
-  description: "This is a placeholder description TODO:.",
+  description: "Alex Pagnotta, Frontend Developer",
   twitter: {
     card: "summary_large_image",
   },
   openGraph: {
     type: "website",
-    // TODO: Social Image
-    // images: [
-    //   {
-    //     url: "",
-    //   },
-    // ],
+    images: [{ url: `/og-image.png` }],
   },
-};
-
-const HeadTags: Metadata = {
   viewport: "width=device-width, initial-scale=1.0",
-  themeColor: "#000000",
+  themeColor: "#ffffff",
   manifest: "/site.webmanifest",
-  metadataBase: process.env.NEXT_PUBLIC_BASE_URL ? new URL(process.env.NEXT_PUBLIC_BASE_URL) : undefined,
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16" },
@@ -54,15 +47,18 @@ const HeadTags: Metadata = {
     other: {
       rel: "mask-icon",
       url: "/safari-pinned-tab.svg",
-      // The color property is not expected from the Metadata type, but still appended to the tag
-      ...{ color: "#000000" },
+      // The color property is not expected from the Metadata type, but still appended to the tag when added.
+      ...{ color: "#424242" },
     },
   },
-};
-
-export const metadata: Metadata = {
-  ...HeadTags,
-  ...SeoMetadata,
+  robots: {
+    follow: true,
+    index: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 };
 
 // Fonts
