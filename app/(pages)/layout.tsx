@@ -64,10 +64,10 @@ export const metadata: Metadata = {
 
 // Fonts
 
-const loraFont = localFont({
-  src: "../fonts/lora-variable.ttf",
+const literataFont = localFont({
+  src: "../fonts/literata-variable.ttf",
   display: "swap",
-  variable: "--font-lora",
+  variable: "--font-literata",
 });
 
 const merriweatherSansFont = localFont({
@@ -84,7 +84,7 @@ const rootContainerStyle = [
 
 const RootLayout = ({ children }: Props) => {
   return (
-    <html lang="en" className={`${loraFont.variable} ${merriweatherSansFont.variable} theme-light`}>
+    <html lang="en" className={`${literataFont.variable} ${merriweatherSansFont.variable} theme-light`}>
       <body>
         <Container className={cx(rootContainerStyle)}>
           <Header className="grid-in-header" />

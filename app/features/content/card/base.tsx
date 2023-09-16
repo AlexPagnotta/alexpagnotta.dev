@@ -19,7 +19,7 @@ const contentTypeCategoryMap = {
   [ContentType.PROJECT]: "Project",
 };
 
-const cardStyles = ["p-32 h-full flex-1 flex flex-col rounded-md bg-theme-color-card-bg text-theme-color-text-primary"];
+const cardStyles = ["p-24 h-full flex-1 flex flex-col rounded-md bg-theme-color-card-bg text-theme-color-text-primary"];
 
 export const BaseContentCard = ({ title, type, date, href, children, className }: Props) => {
   const formattedDate = date && formatContentCardDate(date);
@@ -28,7 +28,7 @@ export const BaseContentCard = ({ title, type, date, href, children, className }
     <article className={cx("w-full h-full pointer-events-none opacity-70", className)}>
       <Link href={href} className="w-full h-full">
         <div className={cx(cardStyles)}>
-          <Text size="title-2" asChild className="mb-12">
+          <Text size="title-3" asChild className="mb-12">
             <h2>{title}</h2>
           </Text>
           <Text size="body-2" asChild className="mb-16 line-clamp-4 flex-1">

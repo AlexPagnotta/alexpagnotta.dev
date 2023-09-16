@@ -38,16 +38,10 @@ const Home = async ({ params }: Props) => {
 
   return (
     <div className="flex flex-col items-end gap-72 lg:gap-96">
-      <Text size="title-1" asChild className="relative whitespace-pre-wrap text-right text-theme-color-text-secondary">
+      <Text size="title-2" asChild className="relative whitespace-pre-wrap text-right text-theme-color-text-secondary">
         <h1>
           Hello, I’m <span className="text-theme-color-text-primary">Alex Pagnotta</span>,{"\n"}a Frontend Developer
-          from Italy.{"\n"}
-          <span className="hidden lg:inline">Currently building </span>
-          <span className="lg:hidden">Building </span>
-          <span className="whitespace-nowrap">
-            things at <span className="inline-block w-60" />
-            <WildLogoSVG className={cx("h-[0.8em] text-theme-color-text-primary", "absolute right-8 bottom-10")} />.
-          </span>
+          from Italy.{"\n"}Currently building things at <span className="text-theme-color-text-primary">Wild</span>.
         </h1>
       </Text>
       <div className={cx(contentItemGridStyles)}>

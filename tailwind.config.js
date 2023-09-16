@@ -60,38 +60,43 @@ module.exports = {
       ...createScale({ min: 544, max: 1024, steps: 32, formatKey: addPxSuffix, formatVal: unitToPx }),
     },
     fontFamily: {
-      serif: ["var(--font-lora)"],
+      serif: ["var(--font-literata)"],
       sans: ["var(--font-merriweather-sans)"],
     },
     fontSize: {
       ...flatten({
         "title-1": {
-          DEFAULT: [pxUnitToRem(26), { lineHeight: 1.5, letterSpacing: "-0.025em" }],
-          desktop: [pxUnitToRem(28), { lineHeight: 1.5, letterSpacing: "-0.025em" }],
+          DEFAULT: [pxUnitToRem(32), { lineHeight: 1.5, letterSpacing: "-0.01em" }],
+          desktop: [pxUnitToRem(36), { lineHeight: 1.5, letterSpacing: "-0.01em" }],
         },
         "title-2": {
-          DEFAULT: [pxUnitToRem(26), { lineHeight: 1.5, letterSpacing: "-0.025em" }],
-          desktop: [pxUnitToRem(26), { lineHeight: 1.5, letterSpacing: "-0.025em" }],
+          DEFAULT: [pxUnitToRem(28), { lineHeight: 1.5, letterSpacing: "-0.01em" }],
+          desktop: [pxUnitToRem(30), { lineHeight: 1.5, letterSpacing: "-0.01em" }],
         },
         "title-3": {
-          DEFAULT: [pxUnitToRem(20), { lineHeight: 1.5, letterSpacing: "-0.025em" }],
-          desktop: [pxUnitToRem(20), { lineHeight: 1.5, letterSpacing: "-0.025em" }],
+          DEFAULT: [pxUnitToRem(26), { lineHeight: 1.5 }],
+          desktop: [pxUnitToRem(26), { lineHeight: 1.5 }],
         },
+        "title-4": {
+          DEFAULT: [pxUnitToRem(22), { lineHeight: 1.6 }],
+          desktop: [pxUnitToRem(22), { lineHeight: 1.6 }],
+        },
+
         "body-4": {
-          DEFAULT: [pxUnitToRem(18), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
-          desktop: [pxUnitToRem(18), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
+          DEFAULT: [pxUnitToRem(20), { lineHeight: 1.8 }],
+          desktop: [pxUnitToRem(20), { lineHeight: 1.8 }],
         },
         "body-3": {
-          DEFAULT: [pxUnitToRem(16), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
-          desktop: [pxUnitToRem(16), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
+          DEFAULT: [pxUnitToRem(16), { lineHeight: 1.8 }],
+          desktop: [pxUnitToRem(16), { lineHeight: 1.8 }],
         },
         "body-2": {
-          DEFAULT: [pxUnitToRem(14), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
-          desktop: [pxUnitToRem(14), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
+          DEFAULT: [pxUnitToRem(14), { lineHeight: 1.8 }],
+          desktop: [pxUnitToRem(14), { lineHeight: 1.8 }],
         },
         "body-1": {
-          DEFAULT: [pxUnitToRem(12), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
-          desktop: [pxUnitToRem(12), { lineHeight: 1.8, letterSpacing: "-0.01em" }],
+          DEFAULT: [pxUnitToRem(12), { lineHeight: 1.8 }],
+          desktop: [pxUnitToRem(12), { lineHeight: 1.8 }],
         },
       }),
     },

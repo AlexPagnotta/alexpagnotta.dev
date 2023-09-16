@@ -22,7 +22,7 @@ export const generateStaticParams = async () => {
 export const dynamicParams = false;
 
 const contentHeroStyles = [
-  "mb-80 lg:mb-96",
+  "mb-56 lg:mb-64",
   "pl-[calc((var(--container-width)-48rem)/2-var(--container-side-spacing))] lg:pl-0", // Align left margin with content body on tablet bp
 ];
 

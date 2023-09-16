@@ -20,7 +20,7 @@ export const ContentHero = ({ title, href, date, className }: Props) => {
   return (
     <div className={cx("flex flex-col items-end", className)}>
       {formattedDate && (
-        <Text size="body-2" className="text-theme-color-text-secondary mb-12 lg:mb-16">
+        <Text size="body-2" className="text-theme-color-text-secondary mb-6 lg:mb-8">
           {formattedDate}
         </Text>
       )}
@@ -32,7 +32,7 @@ export const ContentHero = ({ title, href, date, className }: Props) => {
         </Text>
       )}
       <Text size="title-1" asChild className="text-end">
-        <h1>A new sparky website for Flashy animations, floating windows, retro style, we have everything.</h1>
+        <h1>{title}</h1>
       </Text>
     </div>
   );

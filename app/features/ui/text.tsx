@@ -10,9 +10,10 @@ type Props = ComponentPropsWithoutRef<"span"> &
 export const textStyles = cva("", {
   variants: {
     size: {
-      "title-1": "text-title-1 lg:text-title-1-desktop font-serif font-regular",
-      "title-2": "text-title-2 lg:text-title-2-desktop font-serif font-regular",
-      "title-3": "text-title-3 lg:text-title-3-desktop font-serif font-regular",
+      "title-1": "text-title-1 lg:text-title-1-desktop font-serif font-light",
+      "title-2": "text-title-2 lg:text-title-2-desktop font-serif font-light",
+      "title-3": "text-title-3 lg:text-title-3-desktop font-serif font-light",
+      "title-4": "text-title-4 lg:text-title-4-desktop font-serif font-light",
       "body-4": "text-body-4 lg:text-body-4-desktop font-sans font-light",
       "body-3": "text-body-3 lg:text-body-3-desktop font-sans font-light",
       "body-2": "text-body-2 lg:text-body-2-desktop font-sans font-light",

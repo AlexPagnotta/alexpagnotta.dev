@@ -46,7 +46,7 @@ export const HeaderNavItems = ({ className }: Props) => {
 
         return (
           <li key={item.key}>
-            <Text size="title-3" className={headerItemLinkStyle({ active: isActive })} asChild>
+            <Text size="title-4" className={headerItemLinkStyle({ active: isActive })} asChild>
               <Link href={item.href}>{item.label}</Link>
             </Text>
           </li>
