@@ -1,7 +1,10 @@
 import { type ShowcaseContentCardName, showcaseContentCardsMap } from "./showcase-cards/map";
 
 export type ShowcaseContentCardProps = {
+  title: string;
+  category: string;
   href: string;
+  agency?: string;
   className?: string;
 };
 

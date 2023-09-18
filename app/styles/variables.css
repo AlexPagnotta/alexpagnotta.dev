@@ -6,6 +6,8 @@
   --container-root-top-spacing: var(--header-height);
 
   --container-width: calc((min(100vw, var(--container-max-width))));
+
+  --card-spacing: 24px;
 }
 
 @media screen(lg) {
