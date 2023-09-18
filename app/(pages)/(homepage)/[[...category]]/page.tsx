@@ -1,15 +1,5 @@
-import { cx } from "class-variance-authority";
-
-import WildLogoSVG from "~/assets/svg/wild-logo.svg";
-import { BaseContentCard } from "~/features/content/card/base";
-import { ShowcaseContentCard } from "~/features/content/card/showcase";
-import {
-  CONTENT_CATEGORIES,
-  categoryContentTypeMap,
-  type ContentCategory,
-  contentTypeCategoryMap,
-} from "~/features/content/categories";
-import { ContentType } from "~/features/content/types";
+import { CONTENT_CATEGORIES, categoryContentTypeMap, type ContentCategory } from "~/features/content/categories";
+import { ContentGrid } from "~/features/content/grid";
 import { getAllContentFrontMatters } from "~/features/content/utils.server";
 import { Text } from "~/features/ui/text";
 
@@ -26,11 +16,6 @@ export const generateStaticParams = async () => {
 
 export const dynamicParams = false;
 
-const contentItemGridStyles = [
-  "w-full grid grid-cols-[minmax(0,35rem)] md:grid-cols-[27.2rem_27.2rem]",
-  "justify-center lg:justify-end gap-24",
-];
-
 const Home = async ({ params }: Props) => {
   const category = params.category?.[0];
 
@@ -44,24 +29,8 @@ const Home = async ({ params }: Props) => {
           from Italy.{"\n"}Currently building things at <span className="text-theme-color-text-primary">Wild</span>.
         </h1>
       </Text>
-      <div className={cx(contentItemGridStyles)}>
-        {contentItems.map((contentItem) => {
-          const href = `/${contentTypeCategoryMap[contentItem.type]}/${contentItem.slug}`;
-          return (
-            <div key={contentItem.id} className="min-h-[27.2rem] md:aspect-square md:min-h-0">
-              {contentItem.showcase ? (
-                <ShowcaseContentCard
-                  name={contentItem.showcase}
-                  href={contentItem.type === ContentType.PROJECT ? contentItem.url : href} // TODO: Replace with href in all cases when page detail is ready
-                />
-              ) : (
-                <BaseContentCard title={contentItem.title} type={contentItem.type} date={contentItem.date} href={href}>
-                  {contentItem.excerpt}
-                </BaseContentCard>
-              )}
-            </div>
-          );
-        })}
+      <div className="w-full flex justify-center lg:justify-end">
+        <ContentGrid items={contentItems} />
       </div>
     </div>
   );

@@ -33,7 +33,8 @@
     "mdx-bundler": "9.2.1",
     "next": "13.4.9",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-plock": "3.0.2"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "12.3.1",
