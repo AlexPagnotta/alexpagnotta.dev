@@ -27,4 +27,5 @@
   /* Duolingo Fowl langiage */
   --color-duolingo-fl-card-bg: linear-gradient(40deg, #d5e6f1 0%, #f4d9db 100%);
   --color-duolingo-fl-card-text: rgb(66, 66, 66);
+  --color-duolingo-fl-card-cover-border: rgb(255, 255, 255);
 }

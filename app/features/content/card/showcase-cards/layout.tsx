@@ -13,13 +13,13 @@ type Props = ShowcaseContentCardProps & {
 export const ShowcaseContentCardLayout = ({ title, category, href, agency, className, style, children }: Props) => {
   return (
     <article
-      className={cx("w-full rounded-md", className)}
+      className={cx("w-full rounded-md overflow-hidden", className)}
       style={{
         ...style,
       }}
     >
       <Link href={href} className="w-full">
-        <div className="relative w-full">
+        <div className="relative isolate w-full">
           <div className="flex flex-col gap-2 px-[--card-spacing] pt-[--card-spacing]">
             <Text size="title-3" asChild>
               <h2>{title}</h2>
