@@ -13,3 +13,8 @@ export const contentTypeCategoryMap = {
   [ContentType.POST]: "blog",
   [ContentType.PROJECT]: "projects",
 };
+
+export const contentTypeToCategoryDisplayMap = {
+  [ContentType.POST]: "Blog",
+  [ContentType.PROJECT]: "Project",
+};
