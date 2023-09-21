@@ -26,7 +26,7 @@ export const ContentGrid = ({ items, className }: Props) => {
         const href = `/${contentTypeCategoryMap[item.type]}/${item.slug}`;
 
         return (
-          <div className="max-w-[36rem] md:w-[27.2rem] md:max-w-none">
+          <div className="max-w-[36rem] md:w-[27.2rem] md:max-w-none" key={item.id}>
             {item.showcase ? (
               <ShowcaseContentCard
                 key={item.id}

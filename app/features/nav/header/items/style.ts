@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 export const headerItemLinkStyle = cva(
-  ["transition-colors duration-200 ease-out [&:hover:not(:disabled)]:text-theme-color-text-primary"],
+  ["transition-colors duration-300 ease-out [&:hover:not(:disabled)]:text-theme-color-text-primary"],
   {
     variants: {
       active: {

@@ -1,4 +1,7 @@
+"use client";
+
 import { type VariantProps, cva } from "class-variance-authority";
+import { motion, type Variants } from "framer-motion";
 import NextLink from "next/link";
 import React from "react";
 
@@ -16,9 +19,18 @@ type LinkProps = React.ComponentPropsWithoutRef<"a"> & {
 
 type Props = LinkBaseProps & NextLinkProps & LinkProps;
 
+const ArrowIconAnimationVariants: Variants = {
+  hover: {
+    x: [0, 10, 10, -10, 0],
+    y: [0, -10, -10, 10, 0],
+    opacity: [null, 0, 0, 0, 1],
+    transition: { duration: 0.3, times: [0, 0.4, 0.6, 0.6, 1], ease: "linear" },
+  },
+};
+
 export const linkStyles = cva(
   [
-    "inline-flex items-center gap-6",
+    "inline-flex",
     "tap-highlight-none disabled:cursor-not-allowed disabled:opacity-60", // LinkButton Style
   ],
   {
@@ -62,11 +74,22 @@ export const Link = React.forwardRef(
 );
 
 export const LinkContent = ({ children, arrowIcon }: Pick<LinkBaseProps, "arrowIcon" | "children">) => {
-  return (
-    <>
+  return arrowIcon ? (
+    <motion.span className="inline-flex items-center gap-6" whileHover="hover">
       {children}
-      {arrowIcon ? <Icon name="arrowTopLeft" className="w-10 shrink-0" /> : null}
-    </>
+      {arrowIcon ? (
+        <Icon
+          name="arrowTopLeft"
+          className="w-10 shrink-0"
+          variants={ArrowIconAnimationVariants}
+          transition={{
+            duration: 0.15,
+          }}
+        />
+      ) : null}
+    </motion.span>
+  ) : (
+    <>{children}</>
   );
 };
 
