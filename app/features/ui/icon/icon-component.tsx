@@ -25,6 +25,6 @@ const IconComponent = React.forwardRef<HTMLSpanElement, Props>(({ name, classNam
 
 IconComponent.displayName = "Icon";
 
-const Icon = motion(IconComponent, { forwardMotionProps: true });
+const Icon = motion(IconComponent);
 
 export { Icon };

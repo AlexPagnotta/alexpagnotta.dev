@@ -84,6 +84,7 @@ export const LinkContent = ({ children, arrowIcon }: Pick<LinkBaseProps, "arrowI
           variants={ArrowIconAnimationVariants}
           transition={{
             duration: 0.15,
+            ease: "linear",
           }}
         />
       ) : null}
