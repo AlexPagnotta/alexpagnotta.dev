@@ -33,25 +33,31 @@ export const ShowcaseContentCardLayout = ({
       style={{
         ...style,
       }}
-      initial="initial"
-      whileHover={isMdUp ? "hover" : undefined}
-      whileInView={!isMdUp ? "inView" : undefined}
-      viewport={{
-        margin: "-30% 0px -30% 0px",
-        amount: 0.5,
+      whileTap={{
+        scale: 0.95,
+        transition: { duration: 0.1 },
       }}
       {...rest}
     >
       <Link href={href} className="w-full">
-        <div className="relative isolate w-full">
-          <div className="flex flex-col gap-2 px-[--card-spacing] pt-[--card-spacing]">
+        <motion.div
+          className="relative isolate w-full"
+          initial="initial"
+          whileHover={isMdUp ? "hover" : undefined}
+          whileInView={!isMdUp ? "inView" : undefined}
+          viewport={{
+            margin: "-30% 0px -30% 0px",
+            amount: 0.5,
+          }}
+        >
+          <div className="flex flex-col gap-2 px-[--card-spacing] pt-[--card-spacing] z-1">
             <Text size="title-3" asChild>
               <h2>{title}</h2>
             </Text>
             <Text size="body-1">{[category, agency].filter(Boolean).join(" • ")}</Text>
           </div>
           {children}
-        </div>
+        </motion.div>
       </Link>
     </motion.article>
   );
