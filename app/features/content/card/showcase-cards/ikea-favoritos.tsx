@@ -10,7 +10,7 @@ type Props = ShowcaseContentCardProps;
 const DoorAnimationHover: Variant = {
   opacity: 1,
   transition: {
-    duration: 0.6,
+    duration: 0.4,
     ease: "easeOut",
   },
 };
@@ -36,7 +36,7 @@ export const IkeaFavoritosShowcaseContentCard = ({ className, ...rest }: Props) 
             background: "var(--color-ikea-favoritos-card-door-gradient)",
           }}
           variants={DoorAnimationVariants}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
         />
       </div>
     </ShowcaseContentCardLayout>
