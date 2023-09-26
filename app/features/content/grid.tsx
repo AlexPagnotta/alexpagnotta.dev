@@ -29,7 +29,6 @@ export const ContentGrid = ({ items, className }: Props) => {
           <div className="max-w-[36rem] md:w-[27.2rem] md:max-w-none" key={item.id}>
             {item.showcase ? (
               <ShowcaseContentCard
-                key={item.id}
                 name={item.showcase}
                 title={item.title}
                 category={contentTypeToCategoryDisplayMap[item.type]}
@@ -38,7 +37,6 @@ export const ContentGrid = ({ items, className }: Props) => {
               />
             ) : (
               <BaseContentCard
-                key={item.id}
                 title={item.title}
                 category={contentTypeToCategoryDisplayMap[item.type]}
                 date={item.date}

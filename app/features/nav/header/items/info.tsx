@@ -1,6 +1,12 @@
+"use client";
+
+import { HeaderItem } from "./item";
+import { NavItems } from "./nav";
 import { headerItemLinkStyle } from "./style";
 
 import { siteConfig } from "~/config";
+import { useMediaQuery } from "~/features/dom/hooks/use-media-query";
+import { up } from "~/features/dom/utils/screens";
 import { Link } from "~/features/ui/link";
 import { Text } from "~/features/ui/text";
 
@@ -8,7 +14,7 @@ type Props = {
   className?: string;
 };
 
-const InfoItems = [
+export const InfoItems = [
   {
     key: "github",
     label: "Github",
@@ -32,16 +38,18 @@ const InfoItems = [
 ] as const;
 
 export const HeaderInfoItems = ({ className }: Props) => {
+  const isMdUp = useMediaQuery(up("md"), true);
+
   return (
     <div className={className}>
-      {InfoItems.map((item) => (
-        <li key={item.key}>
+      {InfoItems.map((item, index) => (
+        <HeaderItem key={item.key} index={NavItems.length + index} isMdUp={isMdUp}>
           <Text size="body-4" className={headerItemLinkStyle()} asChild>
             <Link href={item.href} arrowIcon>
               {item.label}
             </Link>
           </Text>
-        </li>
+        </HeaderItem>
       ))}
     </div>
   );
