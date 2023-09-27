@@ -2,17 +2,15 @@ import { type Variants, motion } from "framer-motion";
 
 type Props = {
   index: number;
-  isMdUp: boolean;
   children: React.ReactNode;
 };
 
-type AnimationVariantsProps = Pick<Props, "index" | "isMdUp">;
 const animationVariants: Variants = {
-  initial: ({ isMdUp }: AnimationVariantsProps) => ({
+  initial: {
     opacity: 0,
-    y: isMdUp ? -10 : -15,
-  }),
-  animate: ({ index }: AnimationVariantsProps) => ({
+    y: "var(--animation-y-from)",
+  },
+  animate: ({ index }: { index: number }) => ({
     opacity: 1,
     y: 0,
     transition: {
@@ -26,9 +24,15 @@ const animationVariants: Variants = {
   }),
 };
 
-export const HeaderItem = ({ index, isMdUp, children }: Props) => {
+export const HeaderItem = ({ index, children }: Props) => {
   return (
-    <motion.li initial="initial" animate="animate" custom={{ index, isMdUp }} variants={animationVariants}>
+    <motion.li
+      initial="initial"
+      animate="animate"
+      variants={animationVariants}
+      custom={{ index }}
+      className="[--animation-y-from:-15px]  md:[--animation-y-from:-10px]"
+    >
       {children}
     </motion.li>
   );
