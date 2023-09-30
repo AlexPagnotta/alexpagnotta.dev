@@ -3,6 +3,9 @@
 import { cx } from "class-variance-authority";
 import { motion, type Variants } from "framer-motion";
 
+import { useMediaQuery } from "../dom/hooks/use-media-query";
+import { up } from "../dom/utils/screens";
+
 import { Text } from "~/features/ui/text";
 
 type Props = {
@@ -30,28 +33,19 @@ const animationVariants: Variants = {
 };
 
 export const HomepageTitle = ({ children, className }: Props) => {
-  const wrapperProps = {
-    initial: "initial",
-    animate: "animate",
-    variants: animationVariants,
-  };
+  const isMdUp = useMediaQuery(up("md"));
 
   return (
-    <>
-      <motion.div {...wrapperProps} custom={{ isMdUp: false }} className={cx("md:hidden", className)}>
-        <TitleContent>{children}</TitleContent>
-      </motion.div>
-      <motion.div {...wrapperProps} custom={{ isMdUp: true }} className={cx("hidden md:block", className)}>
-        <TitleContent>{children}</TitleContent>
-      </motion.div>
-    </>
-  );
-};
-
-const TitleContent = ({ children }: Pick<Props, "children">) => {
-  return (
-    <Text size="title-2" asChild className="whitespace-pre-wrap text-right">
-      <h1>{children}</h1>
-    </Text>
+    <motion.div
+      initial="initial"
+      animate={isMdUp === undefined ? undefined : "animate"} // Wait for media query to resolve before animating
+      variants={animationVariants}
+      custom={{ isMdUp }}
+      className={className}
+    >
+      <Text size="title-2" asChild className="whitespace-pre-wrap text-right">
+        <h1>{children}</h1>
+      </Text>
+    </motion.div>
   );
 };

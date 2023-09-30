@@ -1,11 +1,13 @@
 import { type ShowcaseContentCardName, showcaseContentCardsMap } from "./showcase-cards/map";
 
 export type ShowcaseContentCardProps = {
+  index: number;
   title: string;
   category: string;
   href: string;
   agency?: string;
   className?: string;
+  isMdUp?: boolean;
 };
 
 type Props = {
