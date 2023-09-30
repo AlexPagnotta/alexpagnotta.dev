@@ -2,7 +2,7 @@ import { cx } from "class-variance-authority";
 import { motion } from "framer-motion";
 import React from "react";
 
-import { CardBaseAnimationProps } from "../animation";
+import { CardInitialAnimationProps } from "../initial-animation";
 import { type ShowcaseContentCardProps } from "../showcase";
 
 import { Link } from "~/features/ui/link";
@@ -23,6 +23,8 @@ export const ShowcaseContentCardLayout = ({
   style,
   isMdUp,
   children,
+  enableInitialAnimation,
+  onInitialAnimationComplete,
   ...rest
 }: Props) => {
   // TODO: Account for hover supported, using useMediaQuery, so that we also have the "inView" behavior on tablet (?)
@@ -34,7 +36,7 @@ export const ShowcaseContentCardLayout = ({
         style={{
           ...style,
         }}
-        {...CardBaseAnimationProps({ index, isMdUp })}
+        {...(enableInitialAnimation ? CardInitialAnimationProps({ index, isMdUp, onInitialAnimationComplete }) : {})}
         {...rest}
       >
         <motion.div

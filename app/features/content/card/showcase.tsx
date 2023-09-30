@@ -8,6 +8,8 @@ export type ShowcaseContentCardProps = {
   agency?: string;
   className?: string;
   isMdUp?: boolean;
+  enableInitialAnimation?: boolean;
+  onInitialAnimationComplete?: () => void;
 };
 
 type Props = {

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Masonry } from "react-plock";
 
 import { useMediaQuery } from "../dom/hooks/use-media-query";
@@ -17,6 +18,9 @@ type Props = {
 
 export const ContentGrid = ({ items, className }: Props) => {
   const isMdUp = useMediaQuery(up("md"));
+
+  // The react plock grid recreates the items on breakpoint changes, we keep track of the animation to avoid retriggering it
+  const [isCardInitialAnimationOver, setIsCardInitialAnimationOver] = useState<boolean>(false);
 
   return (
     <Masonry
@@ -42,6 +46,8 @@ export const ContentGrid = ({ items, className }: Props) => {
                 agency={item.type === ContentType.PROJECT ? item.agency : undefined}
                 href={item.type === ContentType.PROJECT ? item.url : href} // TODO: Replace with href in all cases when page detail is ready
                 isMdUp={isMdUp}
+                enableInitialAnimation={!isCardInitialAnimationOver}
+                onInitialAnimationComplete={() => setIsCardInitialAnimationOver(true)}
               />
             ) : (
               <BaseContentCard
@@ -52,6 +58,8 @@ export const ContentGrid = ({ items, className }: Props) => {
                 href={href}
                 disabled={true} // TODO: Remove when blog posts are ready
                 isMdUp={isMdUp}
+                enableInitialAnimation={!isCardInitialAnimationOver}
+                onInitialAnimationComplete={() => setIsCardInitialAnimationOver(true)}
               >
                 {item.excerpt}
               </BaseContentCard>

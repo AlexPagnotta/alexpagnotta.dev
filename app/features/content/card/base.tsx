@@ -5,7 +5,7 @@ import { Link } from "../../ui/link";
 import { Text } from "../../ui/text";
 import { formatContentCardDate } from "../dates";
 
-import { CardBaseAnimationProps } from "./animation";
+import { CardInitialAnimationProps } from "./initial-animation";
 
 type Props = {
   index: number;
@@ -17,6 +17,8 @@ type Props = {
   disabled?: boolean;
   className?: string;
   isMdUp?: boolean;
+  enableInitialAnimation?: boolean;
+  onInitialAnimationComplete?: () => void;
 };
 
 export const BaseContentCard = ({
@@ -29,6 +31,8 @@ export const BaseContentCard = ({
   className,
   disabled,
   isMdUp,
+  enableInitialAnimation,
+  onInitialAnimationComplete,
 }: Props) => {
   const formattedDate = date && formatContentCardDate(date);
 
@@ -40,7 +44,9 @@ export const BaseContentCard = ({
           disabled && "pointer-events-none opacity-70", // TODO: Remove disabled prop when blog is ready
           className
         )}
-        {...CardBaseAnimationProps({ index, disabled, isMdUp })}
+        {...(enableInitialAnimation
+          ? CardInitialAnimationProps({ index, cardDisabled: disabled, isMdUp, onInitialAnimationComplete })
+          : {})}
       >
         <div className="p-[--card-spacing] flex-1 flex flex-col">
           <Text size="title-3" asChild className="mb-16">
