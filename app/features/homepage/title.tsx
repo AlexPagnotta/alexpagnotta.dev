@@ -33,23 +33,33 @@ const titleAnimationVariants: Variants = {
   }),
 };
 
-// TODO: Finish Animation
 const categoryPhraseAnimationVariant: Variants = {
   initial: {
+    y: -10,
     opacity: 0,
   },
   animate: {
+    y: 0,
     opacity: 1,
+    transition: {
+      duration: 0.2,
+      ease: "easeOut",
+    },
   },
   exit: {
+    y: 10,
     opacity: 0,
+    transition: {
+      duration: 0.15,
+      ease: "easeOut",
+    },
   },
 };
 
 // Change phrases
 const phrasesContentCategoryMap: Record<ContentCategory, string> = {
-  blog: "This is my blog.",
-  projects: "These are my projects.",
+  blog: "Sometimes I write about things.",
+  projects: "Some cool things I've worked on.",
 };
 
 export const HomepageTitle = ({ children, className }: Props) => {
@@ -83,6 +93,7 @@ export const HomepageTitle = ({ children, className }: Props) => {
               exit="exit"
               variants={categoryPhraseAnimationVariant}
               key={`${category || "default"}-phrase`}
+              className="inline-block"
             >
               {categoryPhrase || (
                 <>
