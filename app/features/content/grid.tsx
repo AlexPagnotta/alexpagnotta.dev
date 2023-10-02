@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Masonry } from "react-plock";
 
@@ -8,7 +9,12 @@ import { up } from "../dom/utils/screens";
 
 import { BaseContentCard } from "./card/base";
 import { ShowcaseContentCard } from "./card/showcase";
-import { contentTypeCategoryMap, contentTypeToCategoryDisplayMap } from "./categories";
+import {
+  type ContentCategory,
+  contentTypeCategoryMap,
+  contentTypeToCategoryDisplayMap,
+  categoryContentTypeMap,
+} from "./categories";
 import { type ContentFrontmatter, ContentType } from "./types";
 
 type Props = {
@@ -19,12 +25,17 @@ type Props = {
 export const ContentGrid = ({ items, className }: Props) => {
   const isMdUp = useMediaQuery(up("md"));
 
+  const pathName = usePathname();
+  const category = pathName.split("/")[1] as ContentCategory | undefined;
+
   // The react plock grid recreates the items on breakpoint changes, we keep track of the animation to avoid retriggering it
   const [isCardInitialAnimationOver, setIsCardInitialAnimationOver] = useState<boolean>(false);
 
+  const filteredItems = category ? items.filter((item) => item.type === categoryContentTypeMap[category]) : items;
+
   return (
     <Masonry
-      items={items}
+      items={filteredItems}
       className={className}
       config={{
         columns: [1, 2],
