@@ -19,12 +19,11 @@ export const ShowcaseContentCardLayout = ({
   category,
   href,
   agency,
+  animationInitialDelay = 0,
   className,
   style,
-  isMdUp,
   children,
-  enableInitialAnimation,
-  onInitialAnimationComplete,
+  isMdUp,
   ...rest
 }: Props) => {
   // TODO: Account for hover supported, using useMediaQuery, so that we also have the "inView" behavior on tablet (?)
@@ -36,7 +35,7 @@ export const ShowcaseContentCardLayout = ({
         style={{
           ...style,
         }}
-        {...(enableInitialAnimation ? CardInitialAnimationProps({ index, isMdUp, onInitialAnimationComplete }) : {})}
+        {...CardInitialAnimationProps({ index, initialDelay: animationInitialDelay, isMdUp })}
         {...rest}
       >
         <motion.div

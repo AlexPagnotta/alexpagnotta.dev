@@ -15,10 +15,9 @@ type Props = {
   children: string;
   href: string;
   disabled?: boolean;
+  animationInitialDelay?: number;
   className?: string;
   isMdUp?: boolean;
-  enableInitialAnimation?: boolean;
-  onInitialAnimationComplete?: () => void;
 };
 
 export const BaseContentCard = ({
@@ -27,26 +26,19 @@ export const BaseContentCard = ({
   category,
   date,
   href,
+  disabled,
+  animationInitialDelay = 0,
   children,
   className,
-  disabled,
   isMdUp,
-  enableInitialAnimation,
-  onInitialAnimationComplete,
 }: Props) => {
   const formattedDate = date && formatContentCardDate(date);
 
   return (
-    <Link href={href} className="w-full">
+    <Link href={href} className={cx("w-full", disabled && "pointer-events-none opacity-70")}>
       <motion.article
-        className={cx(
-          "w-full rounded-md bg-theme-color-card-bg text-theme-color-text-primary",
-          disabled && "pointer-events-none opacity-70", // TODO: Remove disabled prop when blog is ready
-          className
-        )}
-        {...(enableInitialAnimation
-          ? CardInitialAnimationProps({ index, cardDisabled: disabled, isMdUp, onInitialAnimationComplete })
-          : {})}
+        className={cx("w-full rounded-md bg-theme-color-card-bg text-theme-color-text-primary", className)}
+        {...CardInitialAnimationProps({ index, initialDelay: animationInitialDelay, cardDisabled: disabled, isMdUp })}
       >
         <div className="p-[--card-spacing] flex-1 flex flex-col">
           <Text size="title-3" asChild className="mb-16">

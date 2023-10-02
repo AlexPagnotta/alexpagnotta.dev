@@ -6,10 +6,9 @@ export type ShowcaseContentCardProps = {
   category: string;
   href: string;
   agency?: string;
+  animationInitialDelay?: number;
   className?: string;
   isMdUp?: boolean;
-  enableInitialAnimation?: boolean;
-  onInitialAnimationComplete?: () => void;
 };
 
 type Props = {

@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Masonry } from "react-plock";
@@ -17,67 +18,102 @@ import {
 } from "./categories";
 import { type ContentFrontmatter, ContentType } from "./types";
 
-type Props = {
+type WrapperProps = {
   items: ContentFrontmatter[];
-  className?: string;
 };
 
-export const ContentGrid = ({ items, className }: Props) => {
-  const isMdUp = useMediaQuery(up("md"));
+type GridProps = {
+  filteredItems: WrapperProps["items"];
+  isInitialTransitionAnimation: boolean;
+  onAnimationComplete?: () => void;
+};
+
+const ContentGridWrapper = ({ items }: WrapperProps) => {
+  // True when we are doing the first animation, on full reload or coming from different page
+  // In this case we add a delay to wait for sidebar and title animations
+  const [isInitialTransitionAnimation, setIsInitialTransitionAnimation] = useState<boolean>(true);
 
   const pathName = usePathname();
   const category = pathName.split("/")[1] as ContentCategory | undefined;
 
-  // The react plock grid recreates the items on breakpoint changes, we keep track of the animation to avoid retriggering it
-  const [isCardInitialAnimationOver, setIsCardInitialAnimationOver] = useState<boolean>(false);
-
   const filteredItems = category ? items.filter((item) => item.type === categoryContentTypeMap[category]) : items;
 
   return (
-    <Masonry
-      items={filteredItems}
-      className={className}
-      config={{
-        columns: [1, 2],
-        gap: [24, 24],
-        media: [768, 1024],
-      }}
-      render={(item) => {
-        const href = `/${contentTypeCategoryMap[item.type]}/${item.slug}`;
-        const index = items.findIndex((i) => i.id === item.id);
-
-        return (
-          <div className="max-w-[36rem] md:w-[27.2rem] md:max-w-none" key={item.id}>
-            {item.showcase ? (
-              <ShowcaseContentCard
-                index={index}
-                name={item.showcase}
-                title={item.title}
-                category={contentTypeToCategoryDisplayMap[item.type]}
-                agency={item.type === ContentType.PROJECT ? item.agency : undefined}
-                href={item.type === ContentType.PROJECT ? item.url : href} // TODO: Replace with href in all cases when page detail is ready
-                isMdUp={isMdUp}
-                enableInitialAnimation={!isCardInitialAnimationOver}
-                onInitialAnimationComplete={() => setIsCardInitialAnimationOver(true)}
-              />
-            ) : (
-              <BaseContentCard
-                index={index}
-                title={item.title}
-                category={contentTypeToCategoryDisplayMap[item.type]}
-                date={item.date}
-                href={href}
-                disabled={true} // TODO: Remove when blog posts are ready
-                isMdUp={isMdUp}
-                enableInitialAnimation={!isCardInitialAnimationOver}
-                onInitialAnimationComplete={() => setIsCardInitialAnimationOver(true)}
-              >
-                {item.excerpt}
-              </BaseContentCard>
-            )}
-          </div>
-        );
-      }}
-    />
+    <AnimatePresence mode="wait">
+      <ContentGrid
+        key={`grid-${category || "home"}`}
+        filteredItems={filteredItems}
+        isInitialTransitionAnimation={isInitialTransitionAnimation}
+        onAnimationComplete={() => setIsInitialTransitionAnimation(false)}
+      />
+    </AnimatePresence>
   );
 };
+
+const ContentGrid = ({ filteredItems, isInitialTransitionAnimation, onAnimationComplete }: GridProps) => {
+  const isMdUp = useMediaQuery(up("md"));
+
+  const [animationEnabled, setIsAnimationEnabled] = useState<boolean>(true);
+
+  const animationInitialDelay = isInitialTransitionAnimation ? (isMdUp ? 0.4 : 0.3) : 0;
+
+  return (
+    <motion.div
+      // Disable mount animation after the initial one, needed cause the grid items are re-created on breakpoint changes
+      // so the animation would be triggered again
+      initial={animationEnabled ? "initial" : false}
+      animate={isMdUp === undefined ? undefined : "animate"} // Wait for media query to resolve before animating
+      exit="exit"
+      variants={{ initial: {}, animate: {}, exit: {} }}
+      onAnimationComplete={() => {
+        setIsAnimationEnabled(false);
+        onAnimationComplete?.();
+      }}
+    >
+      <Masonry
+        items={filteredItems}
+        config={{
+          columns: [1, 2],
+          gap: [24, 24],
+          media: [768, 1024],
+        }}
+        render={(item) => {
+          const href = `/${contentTypeCategoryMap[item.type]}/${item.slug}`;
+          const index = filteredItems.findIndex((i) => i.id === item.id); // Get real index, ad the grid return the id based on rows
+
+          return (
+            <div className="max-w-[36rem] md:w-[27.2rem] md:max-w-none" key={item.id}>
+              {item.showcase ? (
+                <ShowcaseContentCard
+                  index={index}
+                  name={item.showcase}
+                  title={item.title}
+                  category={contentTypeToCategoryDisplayMap[item.type]}
+                  agency={item.type === ContentType.PROJECT ? item.agency : undefined}
+                  href={item.type === ContentType.PROJECT ? item.url : href} // TODO: Replace with href in all cases when page detail is ready
+                  animationInitialDelay={animationInitialDelay}
+                  isMdUp={isMdUp}
+                />
+              ) : (
+                <BaseContentCard
+                  index={index}
+                  title={item.title}
+                  category={contentTypeToCategoryDisplayMap[item.type]}
+                  date={item.date}
+                  href={href}
+                  disabled={true} // TODO: Remove when blog posts are ready
+                  animationInitialDelay={animationInitialDelay}
+                  isMdUp={isMdUp}
+                >
+                  {item.excerpt}
+                </BaseContentCard>
+              )}
+            </div>
+          );
+        }}
+      />
+    </motion.div>
+  );
+};
+
+export { ContentGridWrapper as ContentGrid };
