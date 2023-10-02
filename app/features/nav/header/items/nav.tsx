@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 
+import { HeaderItem } from "./item";
 import { headerItemLinkStyle } from "./style";
 
 import { Link } from "~/features/ui/link";
@@ -11,7 +12,7 @@ type Props = {
   className?: string;
 };
 
-const NavItems = [
+export const NavItems = [
   {
     key: "home",
     label: "Home",
@@ -41,15 +42,15 @@ export const HeaderNavItems = ({ className }: Props) => {
 
   return (
     <div className={className}>
-      {NavItems.map((item) => {
+      {NavItems.map((item, index) => {
         const isActive = pathnameSegment === item.href;
 
         return (
-          <li key={item.key}>
+          <HeaderItem key={item.key} index={index}>
             <Text size="title-4" className={headerItemLinkStyle({ active: isActive })} asChild>
               <Link href={item.href}>{item.label}</Link>
             </Text>
-          </li>
+          </HeaderItem>
         );
       })}
     </div>

@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 
 import { parseAndMatch } from "~/features/dom/utils/media-query";
 
-export const useMediaQuery = (query: string, defaultState = false) => {
-  const [state, setState] = useState(defaultState);
+export const useMediaQuery = (query: string, defaultState?: boolean) => {
+  const [state, setState] = useState<boolean | undefined>(defaultState);
 
   useEffect(() => {
     let mounted = true;

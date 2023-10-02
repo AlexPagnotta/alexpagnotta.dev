@@ -1,3 +1,7 @@
+"use client";
+
+import { HeaderItem } from "./item";
+import { NavItems } from "./nav";
 import { headerItemLinkStyle } from "./style";
 
 import { siteConfig } from "~/config";
@@ -8,7 +12,7 @@ type Props = {
   className?: string;
 };
 
-const InfoItems = [
+export const InfoItems = [
   {
     key: "github",
     label: "Github",
@@ -34,14 +38,14 @@ const InfoItems = [
 export const HeaderInfoItems = ({ className }: Props) => {
   return (
     <div className={className}>
-      {InfoItems.map((item) => (
-        <li key={item.key}>
+      {InfoItems.map((item, index) => (
+        <HeaderItem key={item.key} index={NavItems.length + index}>
           <Text size="body-4" className={headerItemLinkStyle()} asChild>
             <Link href={item.href} arrowIcon>
               {item.label}
             </Link>
           </Text>
-        </li>
+        </HeaderItem>
       ))}
     </div>
   );

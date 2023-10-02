@@ -40,6 +40,19 @@ const nextConfig = {
 
     return config;
   },
+
+  async rewrites() {
+    return [
+      {
+        source: "/blog",
+        destination: "/",
+      },
+      {
+        source: "/projects",
+        destination: "/",
+      },
+    ];
+  },
 };
 
 module.exports = withBundleAnalyzer(nextConfig);

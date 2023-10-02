@@ -2,10 +2,9 @@ import { cx } from "class-variance-authority";
 import { motion } from "framer-motion";
 import React from "react";
 
+import { CardInitialAnimationProps } from "../initial-animation";
 import { type ShowcaseContentCardProps } from "../showcase";
 
-import { useMediaQuery } from "~/features/dom/hooks/use-media-query";
-import { up } from "~/features/dom/utils/screens";
 import { Link } from "~/features/ui/link";
 import { Text } from "~/features/ui/text";
 
@@ -15,31 +14,30 @@ type Props = ShowcaseContentCardProps & {
 };
 
 export const ShowcaseContentCardLayout = ({
+  index,
   title,
   category,
   href,
   agency,
+  animationInitialDelay = 0,
   className,
   style,
   children,
+  isMdUp,
   ...rest
 }: Props) => {
-  // TODO: Account for hover supported, so that we also have the "inView" behavior on tablet (?)
-  const isMdUp = useMediaQuery(up("md"), true);
+  // TODO: Account for hover supported, using useMediaQuery, so that we also have the "inView" behavior on tablet (?)
 
   return (
-    <motion.article
-      className={cx("w-full rounded-md overflow-hidden", className)}
-      style={{
-        ...style,
-      }}
-      whileTap={{
-        scale: 0.95,
-        transition: { duration: 0.1 },
-      }}
-      {...rest}
-    >
-      <Link href={href} className="w-full">
+    <Link href={href} className="w-full">
+      <motion.article
+        className={cx("w-full rounded-md overflow-hidden", className)}
+        style={{
+          ...style,
+        }}
+        {...CardInitialAnimationProps({ index, initialDelay: animationInitialDelay, isMdUp })}
+        {...rest}
+      >
         <motion.div
           className="relative isolate w-full"
           initial="initial"
@@ -58,7 +56,7 @@ export const ShowcaseContentCardLayout = ({
           </div>
           {children}
         </motion.div>
-      </Link>
-    </motion.article>
+      </motion.article>
+    </Link>
   );
 };
