@@ -42,16 +42,18 @@ const nextConfig = {
   },
 
   async rewrites() {
-    return [
-      {
-        source: "/blog",
-        destination: "/",
-      },
-      {
-        source: "/projects",
-        destination: "/",
-      },
-    ];
+    return {
+      beforeFiles: [
+        {
+          source: "/blog",
+          destination: "/",
+        },
+        {
+          source: "/projects",
+          destination: "/",
+        },
+      ],
+    };
   },
 };
 
