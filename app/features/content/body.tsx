@@ -30,7 +30,7 @@ const MdxImage: MDXComponents["Image"] = ({ src, alt, ...props }) => (
     sizes="(max-width: 768px) 100vw, 480px"
     rounded
     className="w-full"
-    // placeholder="blur" TODO: Add blur placeholder and generate blurDatauRl
+    placeholder="blur"
     data
     {...props}
   />

@@ -1,9 +1,11 @@
 import { cx } from "class-variance-authority";
 import { type Variants, type Variant } from "framer-motion";
 
-import { type ShowcaseContentCardProps } from "../showcase";
+import { type ShowcaseContentCardProps } from "../../showcase";
+import { ShowcaseContentCardLayout } from "../layout";
 
-import { ShowcaseContentCardLayout } from "./layout";
+import CardCoverImageScreenOff from "./assets/card-cover-screen-off.png";
+import CardCoverImageScreenOn from "./assets/card-cover-screen-on.png";
 
 import { Image } from "~/features/ui/image";
 
@@ -35,11 +37,10 @@ const FrameAnimationVariants: Variants = {
 };
 
 const PhoneImageProps = {
-  width: 555,
-  height: 1080,
   quality: 80,
   className: "absolute top-8 right-72 md:right-48 w-[15rem]",
   sizes: "150px",
+
   variants: FrameAnimationVariants,
   transition: {
     rotate: {
@@ -50,7 +51,8 @@ const PhoneImageProps = {
       duration: 0.2,
     },
   },
-};
+  placeholder: "blur",
+} as const;
 
 export const OverheardShowcaseContentCard = ({ className, ...rest }: Props) => {
   return (
@@ -60,17 +62,12 @@ export const OverheardShowcaseContentCard = ({ className, ...rest }: Props) => {
     >
       <div className="relative h-216">
         <Image
-          src="/content/projects/overheard/images/card-cover-screen-off.png"
+          src={CardCoverImageScreenOff}
           alt="An old Nokia dumb phone with a screen that says 'Overheard'"
           {...PhoneImageProps}
           custom={{ isScreenOff: true }}
         />
-        <Image
-          src="/content/projects/overheard/images/card-cover-screen-on.png"
-          alt=""
-          {...PhoneImageProps}
-          custom={{ isScreenOff: false }}
-        />
+        <Image src={CardCoverImageScreenOn} alt="" {...PhoneImageProps} custom={{ isScreenOff: false }} />
       </div>
     </ShowcaseContentCardLayout>
   );

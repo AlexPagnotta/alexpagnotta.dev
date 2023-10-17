@@ -1,9 +1,10 @@
 import { cx } from "class-variance-authority";
 import { motion, type Variant, type Variants } from "framer-motion";
 
-import { type ShowcaseContentCardProps } from "../showcase";
+import { type ShowcaseContentCardProps } from "../../showcase";
+import { ShowcaseContentCardLayout } from "../layout";
 
-import { ShowcaseContentCardLayout } from "./layout";
+import CardCoverImage from "./assets/card-cover.jpg";
 
 import { Image } from "~/features/ui/image";
 
@@ -66,15 +67,14 @@ export const DuolingoFowlLanguageShowcaseContentCard = ({ className, ...rest }: 
       />
       <div className="relative h-192">
         <Image
-          src="/content/projects/duolingo-fowl-language/images/card-cover.jpg"
+          src={CardCoverImage}
           alt="A screenshot of the Duolingo Fowl Language app"
-          width={1080}
-          height={629}
           quality={80}
           className={coverImageStyles}
           sizes="300px"
           variants={FrameAnimationVariants}
           transition={{ duration: 0.3, ease: "easeOut" }}
+          placeholder="blur"
         />
       </div>
     </ShowcaseContentCardLayout>

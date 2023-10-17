@@ -1,6 +1,6 @@
-import { DuolingoFowlLanguageShowcaseContentCard } from "./duolingo-fowl-language";
-import { IkeaFavoritosShowcaseContentCard } from "./ikea-favoritos";
-import { OverheardShowcaseContentCard } from "./overheard";
+import { DuolingoFowlLanguageShowcaseContentCard } from "./duolingo-fowl-language/duolingo-fowl-language";
+import { IkeaFavoritosShowcaseContentCard } from "./ikea-favoritos/ikea-favoritos";
+import { OverheardShowcaseContentCard } from "./overheard/overheard";
 
 export const showcaseContentCardsMap = {
   overheard: OverheardShowcaseContentCard,
