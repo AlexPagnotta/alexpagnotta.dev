@@ -14,7 +14,7 @@ type Props = {
 };
 
 export const generateStaticParams = async () => {
-  const contentItems = await getAllContentSlugs();
+  const contentItems = await getAllContentSlugs([ContentType.BLOG_POST, ContentType.PROJECT]);
 
   return contentItems.map(({ slug, type }) => ({ category: contentTypeCategoryMap[type], slug }));
 };

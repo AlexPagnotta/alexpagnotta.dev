@@ -52,6 +52,10 @@ const nextConfig = {
           source: "/projects",
           destination: "/",
         },
+        {
+          source: "/lab-3d",
+          destination: "/",
+        },
       ],
     };
   },
