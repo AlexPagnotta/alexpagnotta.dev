@@ -1,7 +1,7 @@
 import { type ShowcaseContentCardName } from "./card/showcase-cards/map";
 
 export enum ContentType {
-  POST = "post",
+  BLOG_POST = "blog-post",
   PROJECT = "project",
 }
 
@@ -15,8 +15,8 @@ type BaseFrontmatter = {
   date: string;
 } & ({ showcase: ShowcaseContentCardName; excerpt?: never } | { showcase?: never; excerpt: string }); // Excerpt is not needed when a showcase card is displayed
 
-type PostFrontmatter = BaseFrontmatter & {
-  type: ContentType.POST;
+type BlogPostFrontmatter = BaseFrontmatter & {
+  type: ContentType.BLOG_POST;
 };
 
 type ProjectFrontmatter = BaseFrontmatter & {
@@ -26,7 +26,7 @@ type ProjectFrontmatter = BaseFrontmatter & {
   // TODO: Awards
 };
 
-export type ContentFrontmatter = PostFrontmatter | ProjectFrontmatter;
+export type ContentFrontmatter = BlogPostFrontmatter | ProjectFrontmatter;
 
 /* Content */
 
@@ -34,9 +34,9 @@ export type BaseContent = {
   markdown: string;
 };
 
-export type PostContent = BaseContent & {
-  type: ContentType.POST;
-  frontmatter: PostFrontmatter;
+export type BlogPostContent = BaseContent & {
+  type: ContentType.BLOG_POST;
+  frontmatter: BlogPostFrontmatter;
 };
 
 export type ProjectContent = BaseContent & {
@@ -44,4 +44,4 @@ export type ProjectContent = BaseContent & {
   frontmatter: ProjectFrontmatter;
 };
 
-export type Content = PostContent | ProjectContent;
+export type Content = BlogPostContent | ProjectContent;

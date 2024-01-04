@@ -12,12 +12,12 @@ const CONTENT_FILENAME = "index.mdx";
 const ROOT_CONTENT_FOLDER = path.join(process.cwd(), "app", CONTENT_FOLDER_NAME);
 
 const contentTypePathMap = {
-  [ContentType.POST]: "posts",
+  [ContentType.BLOG_POST]: "blog",
   [ContentType.PROJECT]: "projects",
 } as const;
 
 const pathContentTypeMap = {
-  posts: ContentType.POST,
+  blog: ContentType.BLOG_POST,
   projects: ContentType.PROJECT,
 } as const;
 
