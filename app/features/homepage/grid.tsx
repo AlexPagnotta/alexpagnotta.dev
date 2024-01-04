@@ -5,18 +5,17 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Masonry } from "react-plock";
 
-import { useMediaQuery } from "../dom/hooks/use-media-query";
-import { up } from "../dom/utils/screens";
-
-import { BaseContentCard } from "./card/base";
-import { ShowcaseContentCard } from "./card/showcase";
+import { BaseContentCard } from "../card/base";
+import { ShowcaseContentCard } from "../card/showcase";
 import {
   type ContentCategory,
   contentTypeCategoryMap,
   contentTypeToCategoryDisplayMap,
   categoryContentTypeMap,
-} from "./categories";
-import { type ContentFrontmatter, ContentType } from "./types";
+} from "../content/categories";
+import { type ContentFrontmatter, ContentType } from "../content/types";
+import { useMediaQuery } from "../dom/hooks/use-media-query";
+import { up } from "../dom/utils/screens";
 
 type WrapperProps = {
   items: ContentFrontmatter[];
@@ -28,7 +27,7 @@ type GridProps = {
   onAnimationComplete?: () => void;
 };
 
-const ContentGridWrapper = ({ items }: WrapperProps) => {
+export const HomepageGrid = ({ items }: WrapperProps) => {
   // True when we are doing the first animation, on full reload or coming from different page
   // In this case we add a delay to wait for sidebar and title animations
   const [isInitialTransitionAnimation, setIsInitialTransitionAnimation] = useState<boolean>(true);
@@ -40,7 +39,7 @@ const ContentGridWrapper = ({ items }: WrapperProps) => {
 
   return (
     <AnimatePresence mode="wait">
-      <ContentGrid
+      <Grid
         key={`grid-${category || "home"}`}
         filteredItems={filteredItems}
         isInitialTransitionAnimation={isInitialTransitionAnimation}
@@ -50,7 +49,7 @@ const ContentGridWrapper = ({ items }: WrapperProps) => {
   );
 };
 
-const ContentGrid = ({ filteredItems, isInitialTransitionAnimation, onAnimationComplete }: GridProps) => {
+const Grid = ({ filteredItems, isInitialTransitionAnimation, onAnimationComplete }: GridProps) => {
   const isMdUp = useMediaQuery(up("md"));
 
   const [animationEnabled, setIsAnimationEnabled] = useState<boolean>(true);
@@ -115,5 +114,3 @@ const ContentGrid = ({ filteredItems, isInitialTransitionAnimation, onAnimationC
     </motion.div>
   );
 };
-
-export { ContentGridWrapper as ContentGrid };

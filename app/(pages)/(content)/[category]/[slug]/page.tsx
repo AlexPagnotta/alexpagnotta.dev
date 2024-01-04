@@ -1,10 +1,10 @@
 import { cx } from "class-variance-authority";
 
-import { ContentBody } from "~/features/content/body";
 import { contentTypeCategoryMap, type ContentCategory, categoryContentTypeMap } from "~/features/content/categories";
-import { ContentHero } from "~/features/content/hero";
 import { ContentType } from "~/features/content/types";
 import { getAllContentSlugs, getContentBySlug } from "~/features/content/utils.server";
+import { PostBody } from "~/features/post/body";
+import { PostHero } from "~/features/post/hero";
 
 type Props = {
   params: {
@@ -35,13 +35,13 @@ const Content = async ({ params: { category, slug } }: Props) => {
 
   return (
     <article>
-      <ContentHero
+      <PostHero
         title={frontmatter.title}
         date={isProject ? undefined : frontmatter.date}
         href={isProject ? frontmatter.url : undefined}
         className={cx(contentHeroStyles)}
       />
-      <ContentBody frontmatter={frontmatter} markdown={markdown} className="max-w-[48rem] mx-auto lg:ml-auto lg:mr-0" />
+      <PostBody frontmatter={frontmatter} markdown={markdown} className="max-w-[48rem] mx-auto lg:ml-auto lg:mr-0" />
     </article>
   );
 };

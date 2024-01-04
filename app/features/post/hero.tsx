@@ -4,7 +4,7 @@ import React from "react";
 import { Link } from "../ui/link";
 import { Text } from "../ui/text";
 
-import { formatContentDate } from "./dates";
+import { formatPostDate } from "./utils";
 
 type Props = {
   title: string;
@@ -14,8 +14,8 @@ type Props = {
   className?: string;
 };
 
-export const ContentHero = ({ title, href, date, className }: Props) => {
-  const formattedDate = date && formatContentDate(date);
+export const PostHero = ({ title, href, date, className }: Props) => {
+  const formattedDate = date && formatPostDate(date);
 
   return (
     <div className={cx("flex flex-col items-end", className)}>

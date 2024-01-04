@@ -1,5 +1,4 @@
 import { format, intlFormatDistance, differenceInDays } from "date-fns";
-import { enUS } from "date-fns/locale";
 
 /**
  * Format date to be displayed in content card
@@ -22,13 +21,3 @@ export const formatContentCardDate = (date: string) => {
     return format(parsedDate, "MMMM yyyy");
   }
 };
-
-/**
- * Format date to be displayed in the content page
- * @param date The date to format
- * @returns The formatted date
- */
-export const formatContentDate = (date: string) =>
-  format(new Date(date), "dd MMMM yyyy", {
-    locale: enUS,
-  });

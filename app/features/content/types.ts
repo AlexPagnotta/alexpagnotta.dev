@@ -1,4 +1,4 @@
-import { type ShowcaseContentCardName } from "./card/showcase-cards/map";
+import { type ShowcaseContentCardName } from "../card/showcase-cards/map";
 
 export enum ContentType {
   BLOG_POST = "blog-post",

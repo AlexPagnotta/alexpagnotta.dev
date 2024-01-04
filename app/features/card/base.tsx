@@ -1,11 +1,11 @@
 import { cx } from "class-variance-authority";
 import { motion } from "framer-motion";
 
-import { Link } from "../../ui/link";
-import { Text } from "../../ui/text";
-import { formatContentCardDate } from "../dates";
+import { Link } from "../ui/link";
+import { Text } from "../ui/text";
 
 import { CardInitialAnimationProps } from "./initial-animation";
+import { formatContentCardDate } from "./utils";
 
 type Props = {
   index: number;

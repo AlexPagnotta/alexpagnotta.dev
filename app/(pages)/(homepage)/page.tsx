@@ -1,5 +1,5 @@
-import { ContentGrid } from "~/features/content/grid";
 import { getAllContentFrontMatters } from "~/features/content/utils.server";
+import { HomepageGrid } from "~/features/homepage/grid";
 import { HomepageTitle } from "~/features/homepage/title";
 
 const Home = async () => {
@@ -12,7 +12,7 @@ const Home = async () => {
         Italy.
       </HomepageTitle>
       <div className="w-full flex justify-center lg:justify-end">
-        <ContentGrid items={contentItems} />
+        <HomepageGrid items={contentItems} />
       </div>
     </div>
   );

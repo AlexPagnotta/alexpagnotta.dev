@@ -4,10 +4,9 @@ import { cx } from "class-variance-authority";
 import { getMDXComponent, type MDXContentProps } from "mdx-bundler/client";
 import React, { type Ref } from "react";
 
+import { type Content } from "../content/types";
 import { Image } from "../ui/image";
 import { Link } from "../ui/link";
-
-import { type Content } from "./types";
 
 type Props = {
   frontmatter: Content["frontmatter"];
@@ -43,7 +42,7 @@ const getComponents = (frontmatter: Content["frontmatter"]): MDXContentProps["co
 
 // Body
 
-export const ContentBody = ({ frontmatter, markdown, className }: Props) => {
+export const PostBody = ({ frontmatter, markdown, className }: Props) => {
   const Content = React.useMemo(() => getMDXComponent(markdown), [markdown]);
 
   const components = getComponents(frontmatter);
