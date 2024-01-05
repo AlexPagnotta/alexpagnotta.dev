@@ -24,9 +24,14 @@ const pathContentTypeMap = {
 } as const;
 
 const getAllContentFullPaths = async (types?: ContentType[]) => {
-  const contentTypes = types && types.length > 0 ? types.map((t) => contentTypePathMap[t]) : undefined;
+  let contentTypesSearchPattern = "";
 
-  return glob(`app/${CONTENT_FOLDER_NAME}/${contentTypes ? `{${contentTypes.join(",")}}/` : ""}**/${CONTENT_FILENAME}`);
+  if (types) {
+    const contentTypes = types.length > 0 ? types.map((t) => contentTypePathMap[t]).join(",") : undefined;
+    contentTypesSearchPattern = types.length === 1 ? `${contentTypes}/` : `{${contentTypes}}/`;
+  }
+
+  return glob(`app/${CONTENT_FOLDER_NAME}/${contentTypesSearchPattern}**/${CONTENT_FILENAME}`);
 };
 
 const extractPathFromFullPath = (path: string) => path.split(`app/${CONTENT_FOLDER_NAME}/`)[1] as string;

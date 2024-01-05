@@ -2,7 +2,7 @@ import { getAllContentFrontMatters } from "~/features/content/utils.server";
 import { HomepageGrid } from "~/features/homepage/grid";
 import { HomepageTitle } from "~/features/homepage/title";
 
-const Home = async () => {
+const Page = async () => {
   const contentItems = await getAllContentFrontMatters();
 
   return (
@@ -18,4 +18,4 @@ const Home = async () => {
   );
 };
 
-export default Home;
+export default Page;

@@ -13,22 +13,21 @@ type BaseFrontmatter = {
   title: string;
   slug: string;
   date: string;
+  assetsPath: string;
 } & ({ showcase: ShowcaseContentCardName; excerpt?: never } | { showcase?: never; excerpt: string }); // Excerpt is not needed when a showcase card is displayed
 
-type BlogPostFrontmatter = BaseFrontmatter & {
+export type BlogPostFrontmatter = BaseFrontmatter & {
   type: ContentType.BLOG_POST;
-  assetsPath: string;
 };
 
-type ProjectFrontmatter = BaseFrontmatter & {
+export type ProjectFrontmatter = BaseFrontmatter & {
   type: ContentType.PROJECT;
-  assetsPath: string;
   url: string;
   agency: string;
   // TODO: Awards
 };
 
-type Lab3DFrontmatter = BaseFrontmatter & {
+export type Lab3DFrontmatter = BaseFrontmatter & {
   type: ContentType.LAB_3D;
   route: string;
 };

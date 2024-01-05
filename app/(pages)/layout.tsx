@@ -1,13 +1,9 @@
 import { Analytics } from "@vercel/analytics/react";
-import { cx } from "class-variance-authority";
 import { type Metadata } from "next";
 import localFont from "next/font/local";
 import { type ReactNode } from "react";
 
 import { siteConfig } from "~/config";
-import { Header } from "~/features/nav/header/header";
-import { Container } from "~/features/ui/container";
-import { Footer } from "~/features/ui/footer";
 
 import "../styles/variables.css";
 import "../styles/colors.css";
@@ -76,24 +72,12 @@ const merriweatherSansFont = localFont({
   variable: "--font-merriweather-sans",
 });
 
-const rootContainerStyle = [
-  "grid grid-areas-root-layout grid-cols-root-layout grid-rows-root-layout",
-  "lg:grid-areas-root-layout-lg lg:grid-cols-root-layout-lg lg:grid-rows-root-layout-lg",
-  "pt-[--container-root-top-spacing]",
-];
-
 const Layout = ({ children }: Props) => {
   return (
     <html lang="en" className={`${literataFont.variable} ${merriweatherSansFont.variable} theme-light`}>
       <body>
-        <Container className={cx(rootContainerStyle)}>
-          <Header className="grid-in-header" />
-
-          <main className="grid-in-main">{children}</main>
-
-          <Footer className="grid-in-footer" />
-          <Analytics />
-        </Container>
+        {children}
+        <Analytics />
       </body>
     </html>
   );
