@@ -9,7 +9,7 @@ type Props = ComponentPropsWithoutRef<"div"> & {
 
 const containerStyles = "mx-auto px-[--container-side-spacing] max-w-[--container-max-width]";
 
-const Container = React.forwardRef<HTMLDivElement, Props>(({ asChild, children, className, ...rest }, ref) => {
+export const Container = React.forwardRef<HTMLDivElement, Props>(({ asChild, children, className, ...rest }, ref) => {
   const Component = asChild ? Slot : "div";
 
   return (
@@ -20,5 +20,3 @@ const Container = React.forwardRef<HTMLDivElement, Props>(({ asChild, children, 
 });
 
 Container.displayName = "Container";
-
-export { Container };

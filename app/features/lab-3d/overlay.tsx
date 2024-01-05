@@ -1,4 +1,6 @@
-import { Link } from "../ui/link";
+import { Button } from "../ui/button";
+import { Icon } from "../ui/icon/icon-component";
+import { BaseLink, Link } from "../ui/link";
 import { Text } from "../ui/text";
 
 type Props = {
@@ -21,15 +23,23 @@ export const Lab3DOverlay = ({ title, excerpt, prevItemHref, nextItemHref }: Pro
             <p>{excerpt}</p>
           </Text>
 
-          <div className="flex gap-8 justify-between">
+          <div className="flex gap-8-px justify-between">
             <Text size="body-2" weight="regular" className="cursor-pointer" asChild>
               <Link href="/" underline arrowIcon>
                 Back to home
               </Link>
             </Text>
-            <div className="flex gap-16">
-              {prevItemHref && <Link href={prevItemHref}>Prev</Link>}
-              {nextItemHref && <Link href={nextItemHref}>Next</Link>}
+            <div className="flex gap-8-px">
+              <Button variant="primary" size="md" iconButton aria-label="Go to prev entry" asChild>
+                <BaseLink href={prevItemHref} disabled={!prevItemHref}>
+                  <Icon name="chevronLeft" />
+                </BaseLink>
+              </Button>
+              <Button variant="primary" size="md" iconButton aria-label="Go to next entry" asChild>
+                <BaseLink href={nextItemHref} disabled={!nextItemHref}>
+                  <Icon name="chevronRight" />
+                </BaseLink>
+              </Button>
             </div>
           </div>
         </div>

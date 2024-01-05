@@ -9,6 +9,14 @@
 
   --color-card-bg: rgb(var(--color-gray-10));
 
+  --color-button-primary-bg: rgb(var(--color-gray-10));
+  --color-button-primary-hover-bg: rgb(var(--color-gray-20));
+  --color-button-primary-text: rgb(var(--color-black));
+
+  --color-button-secondary-bg: rgb(var(--color-black));
+  --color-button-secondary-hover-bg: rgb(var(--color-gray-70));
+  --color-button-secondary-text: rgb(var(--color-gray-10));
+
   /* Showcase Cards */
 
   /* Ikea Favoritos */
