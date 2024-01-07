@@ -3,13 +3,17 @@ import { type FC, type SVGProps } from "react";
 import ArrowTopRight from "./arrow-top-right.svg";
 import ChevronLeft from "./chevron-left.svg";
 import ChevronRight from "./chevron-right.svg";
-import Hearth from "./hearth.svg";
+import Heart from "./heart.svg";
+import Minus from "./minus.svg";
+import Plus from "./plus.svg";
 
 export const icons = {
   arrowTopRight: ArrowTopRight,
   chevronLeft: ChevronLeft,
   chevronRight: ChevronRight,
-  hearth: Hearth,
+  heart: Heart,
+  minus: Minus,
+  plus: Plus,
 } as const;
 
 export type IconName = keyof typeof icons;
@@ -27,8 +31,16 @@ export const iconLabelMap: Readonly<Record<IconName, { svg: FC<SVGProps<SVGSVGEl
     svg: ChevronRight,
     label: "chevron right",
   },
-  hearth: {
-    svg: Hearth,
-    label: "hearth",
+  heart: {
+    svg: Heart,
+    label: "heart",
+  },
+  minus: {
+    svg: Minus,
+    label: "minus",
+  },
+  plus: {
+    svg: Plus,
+    label: "plus",
   },
 };

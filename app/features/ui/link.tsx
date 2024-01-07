@@ -79,12 +79,12 @@ export const Link = React.forwardRef(
     return (
       <BaseLink href={href} newWindow={newWindow} {...rest} ref={ref} className={linkStyles({ underline, className })}>
         {arrowIcon ? (
-          <motion.span className="inline-flex items-center gap-6" whileHover="hover">
+          <motion.span className="inline-flex items-center gap-4" whileHover="hover">
             {children}
             {arrowIcon ? (
               <Icon
                 name="arrowTopRight"
-                className="w-10 shrink-0"
+                className="w-14 shrink-0"
                 variants={ArrowIconAnimationVariants}
                 transition={{
                   duration: 0.15,
