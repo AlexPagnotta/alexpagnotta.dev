@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import { type ReactNode } from "react";
 
 import { siteConfig } from "~/config";
+import { PageTransitionWrapper } from "~/features/transitions/page-transition-wrapper";
 
 import "../styles/variables.css";
 import "../styles/colors.css";
@@ -76,7 +77,7 @@ const Layout = ({ children }: Props) => {
   return (
     <html lang="en" className={`${literataFont.variable} ${merriweatherSansFont.variable} theme-light`}>
       <body>
-        {children}
+        <PageTransitionWrapper>{children}</PageTransitionWrapper>
         <Analytics />
       </body>
     </html>

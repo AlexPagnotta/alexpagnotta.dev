@@ -10,7 +10,8 @@ body {
 }
 
 html,
-body {
+body,
+#transition-wrapper {
   height: 100%;
 }
 

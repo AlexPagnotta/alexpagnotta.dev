@@ -1,7 +1,8 @@
-import { Lab3DPageContent } from "./page.client";
-
+import { contentTypeCategoryMap } from "~/features/content/categories";
 import { ContentType, type Lab3DFrontmatter } from "~/features/content/types";
 import { getAllContentFrontMatters, getAllContentSlugs, getContentBySlug } from "~/features/content/utils.server";
+import { Lab3DIFrame } from "~/features/lab-3d/iframe";
+import { Lab3DOverlay } from "~/features/lab-3d/overlay";
 
 type Props = {
   params: {
@@ -16,6 +17,8 @@ export const generateStaticParams = async () => {
 
 export const dynamicParams = false;
 
+const getItemHref = (slug: string) => `/${contentTypeCategoryMap[ContentType.LAB_3D]}/${slug}`;
+
 const Page = async ({ params: { slug } }: Props) => {
   const { frontmatter } = await getContentBySlug(ContentType.LAB_3D, slug);
 
@@ -25,7 +28,17 @@ const Page = async ({ params: { slug } }: Props) => {
   const prevItem = entries[currentEntryIndex + 1];
   const nextItem = entries[currentEntryIndex - 1];
 
-  return <Lab3DPageContent frontmatter={frontmatter as Lab3DFrontmatter} prevItem={prevItem} nextItem={nextItem} />;
+  return (
+    <main className="relative w-full h-full">
+      <Lab3DIFrame route="" />
+      <Lab3DOverlay
+        title={frontmatter.title}
+        excerpt={frontmatter.excerpt}
+        prevItemHref={prevItem && getItemHref(prevItem.slug)}
+        nextItemHref={nextItem && getItemHref(nextItem.slug)}
+      />
+    </main>
+  );
 };
 
 export default Page;
