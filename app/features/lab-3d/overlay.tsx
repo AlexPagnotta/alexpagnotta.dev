@@ -24,9 +24,6 @@ const animationTransition: Transition = {
 };
 
 const animationVariants: Variants = {
-  initial: {
-    y: "calc(100% + var(--card-margin))",
-  },
   open: {
     y: 0,
     transition: {
@@ -35,12 +32,6 @@ const animationVariants: Variants = {
   },
   closed: {
     y: "calc((100% - 76px) + var(--card-margin))",
-    transition: {
-      ...animationTransition,
-    },
-  },
-  exit: {
-    y: "calc(100% + var(--card-margin))",
     transition: {
       ...animationTransition,
     },
@@ -64,9 +55,7 @@ export const Lab3DOverlay = ({ title, excerpt, prevItemHref, nextItemHref }: Pro
           "flex flex-col bg-white text-black rounded-md border-2 border-gray-20",
         ])}
         variants={animationVariants}
-        initial="initial"
         animate={isOpen ? "open" : "closed"}
-        exit="exit"
       >
         <div className="flex items-center justify-between mb-16">
           <Text size="title-4" asChild>
