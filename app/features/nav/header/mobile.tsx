@@ -13,7 +13,7 @@ export const MobileHeader = ({ className }: Props) => {
       className={cx(
         "fixed z-header top-0 inset-x-0",
         "flex justify-between items-center gap-40 w-full h-[--header-height] px-[--container-side-spacing]",
-        "overflow-auto scrollbar-none backdrop-blur-md bg-white bg-opacity-80",
+        "overflow-auto scrollbar-none backdrop-blur-md bg-theme-color-body-bg bg-opacity-80",
         className
       )}
     >

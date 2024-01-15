@@ -140,6 +140,16 @@ module.exports = {
       screens: {
         "hover-supported": { raw: "(hover: hover)" },
       },
+
+      animation: {
+        "lab-3d-loading-cube": "lab-3d-loading-cube 2s infinite linear",
+      },
+      keyframes: {
+        "lab-3d-loading-cube": {
+          from: { transform: "rotateY(0deg) rotateZ(20deg)" },
+          to: { transform: " rotateY(360deg) rotateZ(20deg)" },
+        },
+      },
     },
   },
   plugins: [
