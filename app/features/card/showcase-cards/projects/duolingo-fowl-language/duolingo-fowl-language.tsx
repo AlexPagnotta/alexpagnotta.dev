@@ -1,8 +1,8 @@
 import { cx } from "class-variance-authority";
 import { motion, type Variant, type Variants } from "framer-motion";
 
-import { type ShowcaseContentCardProps } from "../../showcase";
-import { ShowcaseContentCardLayout } from "../layout";
+import { type ShowcaseContentCardProps } from "../../../showcase";
+import { ShowcaseContentCardLayout } from "../../layout";
 
 import CardCoverImage from "./assets/card-cover.jpg";
 

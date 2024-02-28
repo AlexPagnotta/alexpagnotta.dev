@@ -1,8 +1,8 @@
 import { cx } from "class-variance-authority";
 import { type Variants, motion, type Variant } from "framer-motion";
 
-import { type ShowcaseContentCardProps } from "../../showcase";
-import { ShowcaseContentCardLayout } from "../layout";
+import { type ShowcaseContentCardProps } from "../../../showcase";
+import { ShowcaseContentCardLayout } from "../../layout";
 
 type Props = ShowcaseContentCardProps;
 

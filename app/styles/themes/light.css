@@ -19,6 +19,8 @@
 
   /* Showcase Cards */
 
+  /* Projects */
+
   /* Ikea Favoritos */
   --color-ikea-favoritos-card-bg: rgb(255, 233, 178);
   --color-ikea-favoritos-card-text: rgb(48, 68, 91);
@@ -32,4 +34,11 @@
   --color-duolingo-fl-card-bg: linear-gradient(40deg, rgb(43, 177, 243) 0%, rgb(255, 86, 86) 100%);
   --color-duolingo-fl-card-text: rgb(66, 66, 66);
   --color-duolingo-fl-card-cover-border: rgb(255, 255, 255);
+
+  /* 3D Lab */
+
+  /* 3D Ballpit */
+  --color-ballpit-card-bg: rgb(255, 255, 255);
+  --color-ballpit-card-border: rgb(var(--color-gray-20));
+  --color-ballpit-card-text: rgb(var(--color-black));
 }

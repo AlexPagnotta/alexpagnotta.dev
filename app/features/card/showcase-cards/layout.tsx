@@ -39,7 +39,7 @@ export const ShowcaseContentCardLayout = ({
         {...rest}
       >
         <motion.div
-          className="relative isolate w-full"
+          className="relative isolate w-full h-full"
           initial="initial"
           whileHover={isMdUp ? "hover" : undefined}
           whileInView={!isMdUp ? "inView" : undefined}
@@ -48,7 +48,7 @@ export const ShowcaseContentCardLayout = ({
             amount: 0.5,
           }}
         >
-          <div className="flex flex-col gap-2 px-[--card-spacing] pt-[--card-spacing] z-1">
+          <div className="flex flex-col gap-2 px-[--card-spacing] pt-[--card-spacing] z-10">
             <Text size="title-3" asChild>
               <h2>{title}</h2>
             </Text>
