@@ -81,7 +81,7 @@ const Grid = ({ filteredItems, isInitialTransitionAnimation, onAnimationComplete
           const index = filteredItems.findIndex((i) => i.id === item.id); // Get real index, ad the grid return the id based on rows
 
           return (
-            <div className="max-w-[36rem] md:w-[27.2rem] md:max-w-none" key={item.id}>
+            <div className="max-w-[36rem] md:w-[27.2rem] md:max-w-none " key={item.id}>
               {item.showcase ? (
                 <ShowcaseContentCard
                   index={index}

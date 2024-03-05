@@ -47,7 +47,11 @@ export const BaseLink = React.forwardRef(
     { href, newWindow, disabled, className, children, ...rest }: BaseLinkProps,
     ref: React.ForwardedRef<HTMLAnchorElement>
   ) => {
-    const isInternalLink = href && href.startsWith("/");
+    if (!href) {
+      return children;
+    }
+
+    const isInternalLink = href.startsWith("/");
 
     const newWindowAttrs = !isInternalLink || newWindow ? { target: "_blank", rel: "noopener noreferrer" } : {};
 

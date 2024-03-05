@@ -38,7 +38,6 @@
   /* 3D Lab */
 
   /* 3D Ballpit */
-  --color-ballpit-card-bg: rgb(255, 255, 255);
-  --color-ballpit-card-border: rgb(var(--color-gray-20));
+  --color-ballpit-card-bg: rgb(var(--color-gray-10));
   --color-ballpit-card-text: rgb(var(--color-black));
 }

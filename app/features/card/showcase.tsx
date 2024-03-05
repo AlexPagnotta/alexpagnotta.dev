@@ -4,7 +4,7 @@ export type ShowcaseContentCardProps = {
   index: number;
   title: string;
   category: string;
-  href: string;
+  href?: string;
   agency?: string;
   animationInitialDelay?: number;
   className?: string;

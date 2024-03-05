@@ -1,20 +1,30 @@
 import { cx } from "class-variance-authority";
+import { useInView } from "framer-motion";
+import dynamic from "next/dynamic";
+import { useRef } from "react";
 
 import { type ShowcaseContentCardProps } from "../../../showcase";
 import { ShowcaseContentCardLayout } from "../../layout";
 
+const BallpitContentCardScene = dynamic(() => import("./scene").then((mod) => mod.BallpitContentCardScene), {
+  ssr: false,
+});
+
 type Props = ShowcaseContentCardProps;
 
 export const BallpitContentCard = ({ className, ...rest }: Props) => {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  const isInView = useInView(wrapperRef, { once: true });
+
   return (
     <ShowcaseContentCardLayout
-      className={cx(
-        "bg-[--color-ballpit-card-bg] text-[--color-ballpit-card-text] border border-[--color-ballpit-card-border] min-h-[30rem]",
-        className
-      )}
+      ref={wrapperRef}
+      fullCardLink={false}
+      className={cx("bg-[--color-ballpit-card-bg] text-[--color-ballpit-card-text] min-h-[30rem] h-0", className)}
       {...rest}
     >
-      <div className="absolute inset-0 -z-10">{/* TODO: Add 2d balls here */}</div>
+      {isInView && <BallpitContentCardScene className="absolute inset-0 -z-10" />}
     </ShowcaseContentCardLayout>
   );
 };
