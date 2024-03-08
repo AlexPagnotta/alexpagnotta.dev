@@ -31,7 +31,7 @@ export const HeaderItem = ({ index, children }: Props) => {
       animate="animate"
       variants={animationVariants}
       custom={{ index }}
-      className="[--animation-y-from:-15px]  md:[--animation-y-from:-10px]"
+      className="[--animation-y-from:-15px]  md:[--animation-y-from:-10px] shrink-0"
     >
       {children}
     </motion.li>

@@ -40,7 +40,7 @@ export const BaseContentCard = ({
         className={cx("w-full rounded-md bg-theme-color-card-bg text-theme-color-text-primary", className)}
         {...CardInitialAnimationProps({ index, initialDelay: animationInitialDelay, cardDisabled: disabled, isMdUp })}
       >
-        <div className="p-[--card-spacing] flex-1 flex flex-col">
+        <div className="p-[--card-spacing] flex flex-col">
           <Text size="title-3" asChild className="mb-16">
             <h2>{title}</h2>
           </Text>
