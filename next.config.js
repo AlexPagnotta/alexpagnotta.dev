@@ -78,7 +78,7 @@ const ContentSecurityPolicy = `
     media-src 'self';
     connect-src *;
     font-src 'self' vercel.live;
-    frame-src 'self' *.alexpagnotta.dev ${process.env.NEXT_PUBLIC_LAB_3D_BASE_URL} vercel.live;
+    frame-src 'self' ${process.env.NEXT_PUBLIC_LAB_3D_BASE_URL} vercel.live;
 `;
 
 const securityHeaders = [
