@@ -12,17 +12,26 @@ const CONTENT_FILENAME = "index.mdx";
 const ROOT_CONTENT_FOLDER = path.join(process.cwd(), "app", CONTENT_FOLDER_NAME);
 
 const contentTypePathMap = {
-  [ContentType.POST]: "posts",
+  [ContentType.BLOG_POST]: "blog",
   [ContentType.PROJECT]: "projects",
+  [ContentType.LAB_3D]: "lab-3d",
 } as const;
 
 const pathContentTypeMap = {
-  posts: ContentType.POST,
+  blog: ContentType.BLOG_POST,
   projects: ContentType.PROJECT,
+  "lab-3d": ContentType.LAB_3D,
 } as const;
 
-const getAllContentFullPaths = async (type?: ContentType) => {
-  return glob(`app/${CONTENT_FOLDER_NAME}/${type ? contentTypePathMap[type] + "/" : ""}**/${CONTENT_FILENAME}`);
+const getAllContentFullPaths = async (types?: ContentType[]) => {
+  let contentTypesSearchPattern = "";
+
+  if (types) {
+    const contentTypes = types.length > 0 ? types.map((t) => contentTypePathMap[t]).join(",") : undefined;
+    contentTypesSearchPattern = types.length === 1 ? `${contentTypes}/` : `{${contentTypes}}/`;
+  }
+
+  return glob(`app/${CONTENT_FOLDER_NAME}/${contentTypesSearchPattern}**/${CONTENT_FILENAME}`);
 };
 
 const extractPathFromFullPath = (path: string) => path.split(`app/${CONTENT_FOLDER_NAME}/`)[1] as string;
@@ -40,10 +49,10 @@ const generateIdFromSlug = (type: ContentType, slug: string) => `${type}-${slug}
 
 /**
  * Get the slug of all the content mdx files
- * @param type The type of the content, if not provided, all the content paths will be returned
+ * @param types Filter by one or multiple content types, if not provided, all the content paths will be returned
  */
-export const getAllContentSlugs = async (type?: ContentType) => {
-  const fullPaths = await getAllContentFullPaths(type);
+export const getAllContentSlugs = async (types?: ContentType[]) => {
+  const fullPaths = await getAllContentFullPaths(types);
 
   return fullPaths.map((fullPath) => {
     const path = extractPathFromFullPath(fullPath);
@@ -55,10 +64,10 @@ export const getAllContentSlugs = async (type?: ContentType) => {
 
 /**
  * Extract frontmatter data of all the content mdx files
- * @param type The type of the content, if not provided, all the content paths will be returned
+ * @param types Filter by one or multiple content types, if not provided, all the content paths will be returned
  */
-export const getAllContentFrontMatters = async <T extends ContentType>(type?: T) => {
-  const fullPaths = await getAllContentFullPaths(type);
+export const getAllContentFrontMatters = async <T extends ContentType>(types?: T[]) => {
+  const fullPaths = await getAllContentFullPaths(types);
 
   const contentFrontmatters = fullPaths.map((filePath) => {
     const fileSource = fs.readFileSync(path.join(process.cwd(), filePath), "utf-8");

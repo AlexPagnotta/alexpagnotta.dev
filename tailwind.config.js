@@ -27,6 +27,7 @@ module.exports = {
         20: "rgb(var(--color-gray-20) / <alpha-value>)",
         30: "rgb(var(--color-gray-30) / <alpha-value>)",
         50: "rgb(var(--color-gray-50) / <alpha-value>)",
+        70: "rgb(var(--color-gray-70) / <alpha-value>)",
       },
       transparent: "transparent",
       current: "currentColor",
@@ -39,6 +40,12 @@ module.exports = {
           "text-tertiary": "var(--color-text-tertiary)",
           "focus-outline": "var(--color-focus-outline)",
           "card-bg": "var(--color-card-bg)",
+          "button-primary-bg": "var(--color-button-primary-bg)",
+          "button-primary-hover-bg": "var(--color-button-primary-hover-bg)",
+          "button-primary-text": "var(--color-button-primary-text)",
+          "button-secondary-bg": "var(--color-button-secondary-bg)",
+          "button-secondary-hover-bg": "var(--color-button-secondary-hover-bg)",
+          "button-secondary-text": "var(--color-button-secondary-text)",
         },
       },
     },
@@ -132,6 +139,16 @@ module.exports = {
 
       screens: {
         "hover-supported": { raw: "(hover: hover)" },
+      },
+
+      animation: {
+        "lab-3d-loading-cube": "lab-3d-loading-cube 2s infinite linear",
+      },
+      keyframes: {
+        "lab-3d-loading-cube": {
+          from: { transform: "rotateY(0deg) rotateZ(20deg)" },
+          to: { transform: " rotateY(360deg) rotateZ(20deg)" },
+        },
       },
     },
   },

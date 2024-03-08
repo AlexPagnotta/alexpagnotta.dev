@@ -1,23 +1,24 @@
 "use client";
 
-import { type VariantProps, cva } from "class-variance-authority";
+import { type VariantProps, cva, cx } from "class-variance-authority";
 import { motion, type Variants } from "framer-motion";
 import NextLink from "next/link";
 import React from "react";
 
 import { Icon } from "./icon/icon-component";
 
-export type LinkBaseProps = VariantProps<typeof linkStyles> & {
-  children?: React.ReactNode;
-  arrowIcon?: React.ReactNode;
-};
-
-type NextLinkProps = Omit<React.ComponentPropsWithoutRef<typeof NextLink>, "href" | "passHref" | "legacyBehavior">;
-type LinkProps = React.ComponentPropsWithoutRef<"a"> & {
+type AnchorElementProps = React.ComponentPropsWithoutRef<"a"> & {
   newWindow?: boolean;
+  disabled?: boolean;
 };
+type NextLinkProps = Omit<React.ComponentPropsWithoutRef<typeof NextLink>, "href" | "passHref" | "legacyBehavior">;
 
-type Props = LinkBaseProps & NextLinkProps & LinkProps;
+type BaseLinkProps = AnchorElementProps & NextLinkProps;
+
+type Props = BaseLinkProps &
+  VariantProps<typeof linkStyles> & {
+    arrowIcon?: React.ReactNode;
+  };
 
 const ArrowIconAnimationVariants: Variants = {
   hover: {
@@ -28,70 +29,80 @@ const ArrowIconAnimationVariants: Variants = {
   },
 };
 
-export const linkStyles = cva(
-  [
-    "inline-flex",
-    "tap-highlight-none disabled:cursor-not-allowed disabled:opacity-60", // LinkButton Style
-  ],
-  {
-    variants: {
-      underline: {
-        true: "underline decoration-2 underline-offset-4 decoration-current",
-        false: "no-underline",
-      },
+const linkStyles = cva("inline-flex", {
+  variants: {
+    underline: {
+      true: "underline decoration-2 underline-offset-4 decoration-current",
+      false: "no-underline",
     },
-    defaultVariants: {
-      underline: false,
-    },
+  },
+  defaultVariants: {
+    underline: false,
+  },
+});
+
+/** Unstyled link component used for polymorphic components */
+export const BaseLink = React.forwardRef(
+  (
+    { href, newWindow, disabled, className, children, ...rest }: BaseLinkProps,
+    ref: React.ForwardedRef<HTMLAnchorElement>
+  ) => {
+    if (!href) {
+      return children;
+    }
+
+    const isInternalLink = href.startsWith("/");
+
+    const newWindowAttrs = !isInternalLink || newWindow ? { target: "_blank", rel: "noopener noreferrer" } : {};
+
+    const style = cx(className, disabled && "opacity-60 pointer-events-none");
+
+    if (isInternalLink) {
+      return (
+        <NextLink href={href} className={style} {...rest} ref={ref}>
+          {children}
+        </NextLink>
+      );
+    }
+
+    return (
+      <a href={href} className={style} {...rest} {...newWindowAttrs} ref={ref}>
+        {children}
+      </a>
+    );
   }
 );
+
+BaseLink.displayName = "BaseLink";
 
 export const Link = React.forwardRef(
   (
     { href, newWindow, underline, arrowIcon, className, children, ...rest }: Props,
     ref: React.ForwardedRef<HTMLAnchorElement>
   ) => {
-    const isInternalLink = href && href.startsWith("/");
-
-    const newWindowAttrs = !isInternalLink || newWindow ? { target: "_blank", rel: "noopener noreferrer" } : {};
-
-    const style = linkStyles({ underline, className });
-
-    if (isInternalLink) {
-      return (
-        <NextLink href={href} {...rest} ref={ref} className={style}>
-          <LinkContent arrowIcon={arrowIcon}>{children}</LinkContent>
-        </NextLink>
-      );
-    }
-
     return (
-      <a href={href} {...rest} {...newWindowAttrs} ref={ref} className={style}>
-        <LinkContent arrowIcon={arrowIcon}>{children}</LinkContent>
-      </a>
+      <BaseLink href={href} newWindow={newWindow} {...rest} ref={ref} className={linkStyles({ underline, className })}>
+        {arrowIcon ? (
+          <motion.span className="inline-flex items-center gap-4" whileHover="hover">
+            {children}
+            {arrowIcon ? (
+              <Icon
+                name="arrowTopRight"
+                className="w-14 shrink-0"
+                variants={ArrowIconAnimationVariants}
+                transition={{
+                  duration: 0.15,
+                  ease: "linear",
+                }}
+              />
+            ) : null}
+          </motion.span>
+        ) : (
+          <>{children}</>
+        )}
+      </BaseLink>
     );
   }
 );
-
-export const LinkContent = ({ children, arrowIcon }: Pick<LinkBaseProps, "arrowIcon" | "children">) => {
-  return arrowIcon ? (
-    <motion.span className="inline-flex items-center gap-6" whileHover="hover">
-      {children}
-      {arrowIcon ? (
-        <Icon
-          name="arrowTopLeft"
-          className="w-10 shrink-0"
-          variants={ArrowIconAnimationVariants}
-          transition={{
-            duration: 0.15,
-            ease: "linear",
-          }}
-        />
-      ) : null}
-    </motion.span>
-  ) : (
-    <>{children}</>
-  );
-};
 
 Link.displayName = "Link";

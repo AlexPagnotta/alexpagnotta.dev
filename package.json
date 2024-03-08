@@ -31,17 +31,20 @@
     "framer-motion": "10.16.4",
     "glob": "10.3.4",
     "gray-matter": "4.0.3",
+    "matter-js": "0.19.0",
     "mdx-bundler": "9.2.1",
     "next": "13.4.9",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-plock": "3.0.2"
+    "react-plock": "3.0.2",
+    "spin-delay": "1.2.0"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "12.3.1",
     "@savvywombat/tailwindcss-grid-areas": "3.1.0",
     "@svgr/webpack": "8.0.1",
     "@tailwindcss/typography": "0.5.9",
+    "@types/matter-js": "0.19.6",
     "@types/node": "20.4.1",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
