@@ -79,6 +79,11 @@ export const BallpitContentCardScene = ({ className }: Props) => {
     });
     render.current.mouse = mouse;
 
+    // Workaround to fix the canvas blocking scroll page
+    const mouseWheelEvent = (mouse as any).mousewheel;
+    mouse.element.removeEventListener("mousewheel", mouseWheelEvent);
+    mouse.element.removeEventListener("DOMMouseScroll", mouseWheelEvent);
+
     Composite.add(engine.current.world, [ground, leftWall, rightWall, ...balls, mouseConstraint]);
 
     Render.run(render.current);
