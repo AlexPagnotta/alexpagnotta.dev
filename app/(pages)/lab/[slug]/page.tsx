@@ -1,8 +1,8 @@
 import { contentTypeCategoryMap } from "~/features/content/categories";
-import { ContentType, type Lab3DContent, type Lab3DFrontmatter } from "~/features/content/types";
+import { ContentType, type LabContent, type LabFrontmatter } from "~/features/content/types";
 import { getAllContentFrontMatters, getAllContentSlugs, getContentBySlug } from "~/features/content/utils.server";
-import { Lab3DIFrame } from "~/features/lab-3d/iframe";
-import { Lab3DOverlay } from "~/features/lab-3d/overlay";
+import { LabIFrame } from "~/features/lab/iframe";
+import { LabOverlay } from "~/features/lab/overlay";
 
 type Props = {
   params: {
@@ -11,27 +11,27 @@ type Props = {
 };
 
 export const generateStaticParams = async () => {
-  const contentItems = await getAllContentSlugs([ContentType.LAB_3D]);
+  const contentItems = await getAllContentSlugs([ContentType.LAB]);
   return contentItems.map(({ slug }) => ({ slug }));
 };
 
 export const dynamicParams = false;
 
-const getItemHref = (slug: string) => `/${contentTypeCategoryMap[ContentType.LAB_3D]}/${slug}`;
+const getItemHref = (slug: string) => `/${contentTypeCategoryMap[ContentType.LAB]}/${slug}`;
 
 const Page = async ({ params: { slug } }: Props) => {
-  const { frontmatter } = (await getContentBySlug(ContentType.LAB_3D, slug)) as Lab3DContent;
+  const { frontmatter } = (await getContentBySlug(ContentType.LAB, slug)) as LabContent;
 
-  // Get all lab 3d entries, and find the previous and next ones
-  const entries = (await getAllContentFrontMatters([ContentType.LAB_3D])) as Lab3DFrontmatter[];
+  // Get all lab entries, and find the previous and next ones
+  const entries = (await getAllContentFrontMatters([ContentType.LAB])) as LabFrontmatter[];
   const currentEntryIndex = entries.findIndex((item) => item.slug === slug);
   const prevItem = entries[currentEntryIndex + 1];
   const nextItem = entries[currentEntryIndex - 1];
 
   return (
     <main className="relative w-full h-full">
-      <Lab3DIFrame title={frontmatter.title} route={frontmatter.route} />
-      <Lab3DOverlay
+      <LabIFrame title={frontmatter.title} route={frontmatter.route} />
+      <LabOverlay
         title={frontmatter.title}
         excerpt={frontmatter.excerpt}
         prevItemHref={prevItem && getItemHref(prevItem.slug)}

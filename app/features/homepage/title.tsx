@@ -59,7 +59,7 @@ const categoryPhraseAnimationVariant: Variants = {
 const phrasesContentCategoryMap: Record<ContentCategory, string> = {
   blog: "Sometimes I write about things.",
   projects: "Some cool projects I've worked on.",
-  "lab-3d": "Trying to do 3d stuff.",
+  lab: "Trying to build cool stuff.",
 };
 
 export const HomepageTitle = ({ children, className }: Props) => {

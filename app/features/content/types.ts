@@ -3,7 +3,7 @@ import { type ShowcaseContentCardName } from "../card/showcase-cards/map";
 export enum ContentType {
   BLOG_POST = "blog-post",
   PROJECT = "project",
-  LAB_3D = "lab-3d",
+  LAB = "lab",
 }
 
 /* Frontmatter */
@@ -27,12 +27,12 @@ export type ProjectFrontmatter = BaseFrontmatter & {
   // TODO: Awards
 };
 
-export type Lab3DFrontmatter = BaseFrontmatter & {
-  type: ContentType.LAB_3D;
+export type LabFrontmatter = BaseFrontmatter & {
+  type: ContentType.LAB;
   route: string;
 };
 
-export type ContentFrontmatter = BlogPostFrontmatter | ProjectFrontmatter | Lab3DFrontmatter;
+export type ContentFrontmatter = BlogPostFrontmatter | ProjectFrontmatter | LabFrontmatter;
 
 /* Content */
 
@@ -50,9 +50,9 @@ export type ProjectContent = BaseContent & {
   frontmatter: ProjectFrontmatter;
 };
 
-export type Lab3DContent = BaseContent & {
-  type: ContentType.LAB_3D;
-  frontmatter: Lab3DFrontmatter;
+export type LabContent = BaseContent & {
+  type: ContentType.LAB;
+  frontmatter: LabFrontmatter;
 };
 
-export type Content = BlogPostContent | ProjectContent | Lab3DContent;
+export type Content = BlogPostContent | ProjectContent | LabContent;

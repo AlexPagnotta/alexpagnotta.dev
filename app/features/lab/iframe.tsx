@@ -11,7 +11,7 @@ type Props = {
   route: string;
 };
 
-const Lab3DIFrame = React.forwardRef<HTMLIFrameElement, Props>(({ title, route, ...rest }, ref) => {
+const LabIFrame = React.forwardRef<HTMLIFrameElement, Props>(({ title, route, ...rest }, ref) => {
   const [hasMounted, setHasMounted] = useState(false);
 
   React.useEffect(() => {
@@ -60,6 +60,6 @@ const Lab3DIFrame = React.forwardRef<HTMLIFrameElement, Props>(({ title, route, 
   );
 });
 
-Lab3DIFrame.displayName = "Lab3DIFrame";
+LabIFrame.displayName = "Lab3DIFrame";
 
-export { Lab3DIFrame };
+export { LabIFrame };
