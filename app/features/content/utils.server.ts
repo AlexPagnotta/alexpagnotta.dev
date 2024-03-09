@@ -14,13 +14,13 @@ const ROOT_CONTENT_FOLDER = path.join(process.cwd(), "app", CONTENT_FOLDER_NAME)
 const contentTypePathMap = {
   [ContentType.BLOG_POST]: "blog",
   [ContentType.PROJECT]: "projects",
-  [ContentType.LAB_3D]: "lab-3d",
+  [ContentType.LAB]: "lab",
 } as const;
 
 const pathContentTypeMap = {
   blog: ContentType.BLOG_POST,
   projects: ContentType.PROJECT,
-  "lab-3d": ContentType.LAB_3D,
+  lab: ContentType.LAB,
 } as const;
 
 const getAllContentFullPaths = async (types?: ContentType[]) => {

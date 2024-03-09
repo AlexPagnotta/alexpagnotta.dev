@@ -29,9 +29,9 @@ export const NavItems = [
     href: "/projects",
   },
   {
-    key: "lab-3d",
-    label: "3D Lab",
-    href: "/lab-3d",
+    key: "lab",
+    label: "Lab",
+    href: "/lab",
   },
   // TODO: Reimplement
   // {

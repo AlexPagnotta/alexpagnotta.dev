@@ -38,7 +38,7 @@ const animationVariants: Variants = {
   },
 };
 
-export const Lab3DOverlay = ({ title, excerpt, prevItemHref, nextItemHref }: Props) => {
+export const LabOverlay = ({ title, excerpt, prevItemHref, nextItemHref }: Props) => {
   const [isOpen, setIsOpen] = useState(true);
 
   return (
