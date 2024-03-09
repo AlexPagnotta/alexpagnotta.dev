@@ -21,7 +21,7 @@ const LabIFrame = React.forwardRef<HTMLIFrameElement, Props>(({ title, route, ..
   const [isLoading, setIsLoading] = useState(true);
   const isLoadingVisible = useSpinDelay(isLoading, { delay: 500, minDuration: 300 });
 
-  const src = `${process.env.NEXT_PUBLIC_LAB_3D_BASE_URL}/${route}`;
+  const src = `${process.env.NEXT_PUBLIC_LAB_BASE_URL}/${route}`;
 
   return (
     <div className="relative w-full h-full">
