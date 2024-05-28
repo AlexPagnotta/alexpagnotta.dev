@@ -2,15 +2,16 @@
 
 import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { type ReactNode } from "react";
+
+import { Text } from "~/features/ui/text";
 
 import { type ContentCategory } from "../content/categories";
 import { useMediaQuery } from "../dom/hooks/use-media-query";
 import { up } from "../dom/utils/screens";
 
-import { Text } from "~/features/ui/text";
-
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 };
 

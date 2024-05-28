@@ -2,11 +2,11 @@
 
 import { usePathname } from "next/navigation";
 
-import { HeaderItem } from "./item";
-import { headerItemLinkStyle } from "./style";
-
 import { Link } from "~/features/ui/link";
 import { Text } from "~/features/ui/text";
+
+import { HeaderItem } from "./item";
+import { headerItemLinkStyle } from "./style";
 
 type Props = {
   className?: string;

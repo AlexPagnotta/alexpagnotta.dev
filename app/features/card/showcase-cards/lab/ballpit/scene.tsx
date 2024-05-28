@@ -18,6 +18,7 @@ export const BallpitContentCardScene = ({ className }: Props) => {
   const render = useRef<Render>();
   const engine = useRef<Engine>();
 
+  // eslint-disable-next-line no-undef
   const startTimeout = useRef<NodeJS.Timeout>();
 
   const init = useCallback(() => {

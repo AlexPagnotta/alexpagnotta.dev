@@ -1,12 +1,12 @@
 "use client";
 
-import { HeaderItem } from "./item";
-import { NavItems } from "./nav";
-import { headerItemLinkStyle } from "./style";
-
 import { siteConfig } from "~/config";
 import { Link } from "~/features/ui/link";
 import { Text } from "~/features/ui/text";
+
+import { HeaderItem } from "./item";
+import { NavItems } from "./nav";
+import { headerItemLinkStyle } from "./style";
 
 type Props = {
   className?: string;

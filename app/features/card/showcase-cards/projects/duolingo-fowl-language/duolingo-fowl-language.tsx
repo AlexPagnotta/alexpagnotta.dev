@@ -1,12 +1,12 @@
 import { cx } from "class-variance-authority";
 import { motion, type Variant, type Variants } from "framer-motion";
 
+import { Image } from "~/features/ui/image";
+
 import { type ShowcaseContentCardProps } from "../../../showcase";
 import { ShowcaseContentCardLayout } from "../../layout";
 
 import CardCoverImage from "./assets/card-cover.jpg";
-
-import { Image } from "~/features/ui/image";
 
 type Props = ShowcaseContentCardProps;
 

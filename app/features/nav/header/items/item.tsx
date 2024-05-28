@@ -1,8 +1,9 @@
 import { type Variants, motion } from "framer-motion";
+import { type ReactNode } from "react";
 
 type Props = {
   index: number;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 const animationVariants: Variants = {

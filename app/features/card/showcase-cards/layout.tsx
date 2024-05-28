@@ -2,11 +2,11 @@ import { cx } from "class-variance-authority";
 import { motion } from "framer-motion";
 import React from "react";
 
-import { CardInitialAnimationProps } from "../initial-animation";
-import { type ShowcaseContentCardProps } from "../showcase";
-
 import { Link } from "~/features/ui/link";
 import { Text } from "~/features/ui/text";
+
+import { CardInitialAnimationProps } from "../initial-animation";
+import { type ShowcaseContentCardProps } from "../showcase";
 
 type Props = ShowcaseContentCardProps & {
   fullCardLink?: boolean;
