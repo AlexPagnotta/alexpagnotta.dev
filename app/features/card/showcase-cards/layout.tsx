@@ -32,8 +32,6 @@ export const ShowcaseContentCardLayout = React.forwardRef<HTMLDivElement, Props>
     },
     ref
   ) => {
-    // TODO: Account for hover supported, using useMediaQuery, so that we also have the "inView" behavior on tablet
-
     return (
       <div className="w-full" ref={ref}>
         <Link href={fullCardLink ? href : undefined} className="w-full">
