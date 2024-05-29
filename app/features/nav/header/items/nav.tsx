@@ -18,11 +18,12 @@ export const NavItems = [
     label: "Home",
     href: "/",
   },
-  {
-    key: "blog",
-    label: "Blog",
-    href: "/blog",
-  },
+  // TODO: Re-enable when blog posts are ready
+  // {
+  //   key: "blog",
+  //   label: "Blog",
+  //   href: "/blog",
+  // },
   {
     key: "projects",
     label: "Projects",
@@ -33,12 +34,6 @@ export const NavItems = [
     label: "Lab",
     href: "/lab",
   },
-  // TODO: Reimplement
-  // {
-  //   key: "other",
-  //   label: "Other",
-  //   href: "/other",
-  // },
 ] as const;
 
 export const HeaderNavItems = ({ className }: Props) => {

@@ -53,10 +53,11 @@ const nextConfig = {
   async rewrites() {
     return {
       beforeFiles: [
-        {
-          source: "/blog",
-          destination: "/",
-        },
+        // TODO: Re-enable when blog posts are ready
+        // {
+        //   source: "/blog",
+        //   destination: "/",
+        // },
         {
           source: "/projects",
           destination: "/",

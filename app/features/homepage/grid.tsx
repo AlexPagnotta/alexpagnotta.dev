@@ -101,7 +101,6 @@ const Grid = ({ filteredItems, isInitialTransitionAnimation, onAnimationComplete
                   category={contentTypeToCategoryDisplayMap[item.type]}
                   date={item.date}
                   href={href}
-                  disabled={item.type === ContentType.BLOG_POST} // TODO: Remove when blog posts are ready
                   animationInitialDelay={animationInitialDelay}
                   isMdUp={isMdUp}
                 >
