@@ -1,5 +1,5 @@
 import { cx } from "class-variance-authority";
-import { type Variants, type Variant } from "framer-motion";
+import { type Variants, type Variant, type Transition } from "framer-motion";
 
 import { Image } from "~/features/ui/image";
 
@@ -13,18 +13,20 @@ type Props = ShowcaseContentCardProps;
 
 type PhoneAnimationProps = { isScreenOff: boolean };
 
+const AnimationTransition: Transition = {
+  rotate: {
+    duration: 0.3,
+    ease: "easeOut",
+  },
+  opacity: {
+    duration: 0.2,
+  },
+};
+
 const PhoneAnimationHover: Variant = {
   rotate: 3,
   opacity: 1,
-  transition: {
-    rotate: {
-      duration: 0.3,
-      ease: "easeOut",
-    },
-    opacity: {
-      duration: 0.1,
-    },
-  },
+  transition: AnimationTransition,
 };
 
 const FrameAnimationVariants: Variants = {
@@ -42,15 +44,7 @@ const PhoneImageProps = {
   sizes: "150px",
 
   variants: FrameAnimationVariants,
-  transition: {
-    rotate: {
-      duration: 0.3,
-      ease: "easeOut",
-    },
-    opacity: {
-      duration: 0.2,
-    },
-  },
+  transition: AnimationTransition,
   placeholder: "blur",
 } as const;
 
