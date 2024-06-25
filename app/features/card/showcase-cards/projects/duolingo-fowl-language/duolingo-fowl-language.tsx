@@ -1,5 +1,5 @@
 import { cx } from "class-variance-authority";
-import { motion, type Variant, type Variants } from "framer-motion";
+import { motion, type Transition, type Variant, type Variants } from "framer-motion";
 
 import { Image } from "~/features/ui/image";
 
@@ -9,6 +9,11 @@ import { ShowcaseContentCardLayout } from "../../layout";
 import CardCoverImage from "./assets/card-cover.jpg";
 
 type Props = ShowcaseContentCardProps;
+
+const AnimationTransition: Transition = {
+  duration: 0.4,
+  ease: "easeOut",
+};
 
 const BgAnimationHover: Variant = {
   opacity: 0.3,
@@ -31,10 +36,7 @@ const FrameAnimationHover: Variant = {
   x: -10,
   y: -15,
   scale: 1,
-  transition: {
-    duration: 0.3,
-    ease: "easeOut",
-  },
+  transition: AnimationTransition,
 };
 
 const FrameAnimationVariants: Variants = {
@@ -63,7 +65,7 @@ export const DuolingoFowlLanguageShowcaseContentCard = ({ className, ...rest }: 
         }}
         className="absolute -inset-50"
         variants={BgAnimationVariants}
-        transition={{ duration: 0.3, ease: "easeOut" }}
+        transition={AnimationTransition}
       />
       <div className="relative h-192">
         <Image
@@ -73,7 +75,7 @@ export const DuolingoFowlLanguageShowcaseContentCard = ({ className, ...rest }: 
           className={coverImageStyles}
           sizes="300px"
           variants={FrameAnimationVariants}
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          transition={AnimationTransition}
           placeholder="blur"
         />
       </div>

@@ -1,17 +1,19 @@
 import { cx } from "class-variance-authority";
-import { type Variants, motion, type Variant } from "framer-motion";
+import { type Variants, motion, type Variant, type Transition } from "framer-motion";
 
 import { type ShowcaseContentCardProps } from "../../../showcase";
 import { ShowcaseContentCardLayout } from "../../layout";
 
 type Props = ShowcaseContentCardProps;
 
+const AnimationTransition: Transition = {
+  duration: 0.4,
+  ease: "easeOut",
+};
+
 const DoorAnimationHover: Variant = {
   opacity: 1,
-  transition: {
-    duration: 0.4,
-    ease: "easeOut",
-  },
+  transition: AnimationTransition,
 };
 
 const DoorAnimationVariants: Variants = {
@@ -35,7 +37,7 @@ export const IkeaFavoritosShowcaseContentCard = ({ className, ...rest }: Props) 
             background: "var(--color-ikea-favoritos-card-door-gradient)",
           }}
           variants={DoorAnimationVariants}
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          transition={AnimationTransition}
         />
       </div>
     </ShowcaseContentCardLayout>

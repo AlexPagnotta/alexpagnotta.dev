@@ -40,4 +40,9 @@
   /* 3D Ballpit */
   --color-ballpit-card-bg: rgb(var(--color-gray-10));
   --color-ballpit-card-text: rgb(var(--color-black));
+
+  /* 3D Carousel */
+  --color-carousel-card-bg: rgb(219, 219, 243);
+  --color-carousel-card-text: rgb(var(--color-black));
+  --color-carousel-card-cards-gradient: linear-gradient(180deg, rgb(206, 206, 234) 0%, rgb(125, 125, 165) 100%);
 }
