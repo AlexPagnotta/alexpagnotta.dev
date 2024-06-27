@@ -30,6 +30,7 @@ export type ProjectFrontmatter = BaseFrontmatter & {
 export type LabFrontmatter = BaseFrontmatter & {
   type: ContentType.LAB;
   route: string;
+  github: string;
 };
 
 export type ContentFrontmatter = BlogPostFrontmatter | ProjectFrontmatter | LabFrontmatter;

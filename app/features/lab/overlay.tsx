@@ -12,8 +12,7 @@ import { Text } from "../ui/text";
 type Props = {
   title: string;
   excerpt?: string;
-  prevItemHref?: string;
-  nextItemHref?: string;
+  actionLink?: string;
 };
 
 const animationTransition: Transition = {
@@ -38,7 +37,7 @@ const animationVariants: Variants = {
   },
 };
 
-export const LabOverlay = ({ title, excerpt, prevItemHref, nextItemHref }: Props) => {
+export const LabOverlay = ({ title, excerpt, actionLink }: Props) => {
   const [isOpen, setIsOpen] = useState(true);
 
   return (
@@ -87,18 +86,11 @@ export const LabOverlay = ({ title, excerpt, prevItemHref, nextItemHref }: Props
               </Link>
             </Text>
 
-            <div className="flex gap-8-px">
-              <Button variant="primary" size="md" iconButton aria-label="Go to prev entry" asChild>
-                <BaseLink href={prevItemHref} disabled={!prevItemHref} tabIndex={!isOpen ? -1 : undefined}>
-                  <Icon name="chevronLeft" />
-                </BaseLink>
-              </Button>
-              <Button variant="primary" size="md" iconButton aria-label="Go to next entry" asChild>
-                <BaseLink href={nextItemHref} disabled={!nextItemHref} tabIndex={!isOpen ? -1 : undefined}>
-                  <Icon name="chevronRight" />
-                </BaseLink>
-              </Button>
-            </div>
+            <Button variant="secondary" size="md" iconButton aria-label="Open on GitHub" asChild>
+              <BaseLink href={actionLink}>
+                <Icon name="github" />
+              </BaseLink>
+            </Button>
           </div>
         </div>
       </motion.div>
