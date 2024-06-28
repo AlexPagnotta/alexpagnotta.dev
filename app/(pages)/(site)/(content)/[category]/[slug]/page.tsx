@@ -4,7 +4,7 @@ import { contentTypeCategoryMap, type ContentCategory, categoryContentTypeMap } 
 import { ContentType } from "~/features/content/types";
 import { getAllContentSlugs, getContentBySlug } from "~/features/content/utils.server";
 import { PostBody } from "~/features/post/body";
-import { PostHero } from "~/features/post/hero";
+import { PostHero } from "~/features/post/hero/hero";
 
 type Props = {
   params: {
@@ -39,6 +39,7 @@ const Page = async ({ params: { category, slug } }: Props) => {
         title={frontmatter.title}
         date={isProject ? undefined : frontmatter.date}
         href={isProject ? frontmatter.url : undefined}
+        awards={isProject ? frontmatter.awards : undefined}
         className={cx(contentHeroStyles)}
       />
       <PostBody frontmatter={frontmatter} markdown={markdown} className="max-w-[48rem] mx-auto lg:ml-auto lg:mr-0" />

@@ -1,20 +1,21 @@
 import { cx } from "class-variance-authority";
 import React from "react";
 
-import { Link } from "../ui/link";
-import { Text } from "../ui/text";
+import { Link } from "../../ui/link";
+import { Text } from "../../ui/text";
+import { formatPostDate } from "../utils";
 
-import { formatPostDate } from "./utils";
+import { Award } from "./award/award";
 
 type Props = {
   title: string;
   href?: string;
   date?: string;
-  // TODO: Awards
+  awards?: string[];
   className?: string;
 };
 
-export const PostHero = ({ title, href, date, className }: Props) => {
+export const PostHero = ({ title, href, date, awards, className }: Props) => {
   const formattedDate = date && formatPostDate(date);
 
   return (
@@ -31,9 +32,16 @@ export const PostHero = ({ title, href, date, className }: Props) => {
           </Link>
         </Text>
       )}
-      <Text size="title-1" asChild className="text-end">
+      <Text size="title-1" asChild className="text-end mb-32">
         <h1>{title}</h1>
       </Text>
+      {awards && (
+        <div className="flex flex-col gap-6 text-end">
+          {awards.map((award, index) => (
+            <Award key={index} awardItem={award} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

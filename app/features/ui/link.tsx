@@ -55,7 +55,7 @@ export const BaseLink = React.forwardRef(
 
     const newWindowAttrs = !isInternalLink || newWindow ? { target: "_blank", rel: "noopener noreferrer" } : {};
 
-    const style = cx(className, disabled && "opacity-60 pointer-events-none");
+    const style = cx("inline-flex", className, disabled && "opacity-60 pointer-events-none");
 
     if (isInternalLink) {
       return (

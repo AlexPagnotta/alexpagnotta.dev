@@ -24,7 +24,7 @@ export type ProjectFrontmatter = BaseFrontmatter & {
   type: ContentType.PROJECT;
   url: string;
   agency: string;
-  // TODO: Awards
+  awards: string[];
 };
 
 export type LabFrontmatter = BaseFrontmatter & {
