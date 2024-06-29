@@ -1,5 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
+import BundleAnalyzer from "@next/bundle-analyzer";
+import withPlaiceholder from "@plaiceholder/next";
+
+const withBundleAnalyzer = BundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
 
@@ -109,4 +111,5 @@ const securityHeaders = [
   },
 ];
 
-module.exports = withBundleAnalyzer(nextConfig);
+// eslint-disable-next-line import/no-default-export
+export default withBundleAnalyzer(withPlaiceholder(nextConfig));

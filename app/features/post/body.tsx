@@ -1,12 +1,10 @@
-"use client";
-
 import { cx } from "class-variance-authority";
 import { getMDXComponent, type MDXContentProps } from "mdx-bundler/client";
-import React, { type Ref } from "react";
+import React from "react";
 
 import { type Content } from "../content/types";
-import { Image } from "../ui/image";
-import { Link } from "../ui/link";
+import { MdxImage } from "../markdown/image/image";
+import { MdxLink } from "../markdown/link";
 
 type Props = {
   frontmatter: Content["frontmatter"];
@@ -16,26 +14,9 @@ type Props = {
 
 // MDX Components
 
-type MDXComponents = NonNullable<MDXContentProps["components"]>;
+export type MDXComponents = NonNullable<MDXContentProps["components"]>;
 
-const MdxLink: MDXComponents["a"] = ({ ref, ...props }) => (
-  <Link {...props} ref={ref as Ref<HTMLAnchorElement>} underline />
-);
-
-const MdxImage: MDXComponents["Image"] = ({ src, alt, ...props }) => (
-  <Image
-    src={src}
-    alt={alt}
-    sizes="(max-width: 768px) 100vw, 480px"
-    rounded
-    className="w-full"
-    placeholder="blur"
-    data
-    {...props}
-  />
-);
-
-const getComponents = (frontmatter: Content["frontmatter"]): MDXContentProps["components"] => ({
+const getComponents = (frontmatter: Content["frontmatter"]): MDXComponents => ({
   a: MdxLink,
   Image: ({ src, ...props }) => <MdxImage src={`/${frontmatter.assetsPath}/images/${src}`} {...props} />,
 });

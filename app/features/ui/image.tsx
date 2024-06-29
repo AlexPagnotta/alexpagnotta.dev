@@ -1,3 +1,5 @@
+"use client";
+
 import { type VariantProps, cva } from "class-variance-authority";
 import { motion } from "framer-motion";
 import { type ImageProps } from "next/image";

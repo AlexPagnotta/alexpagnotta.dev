@@ -6,7 +6,7 @@ import React from "react";
 
 import { iconLabelMap, type IconName } from "~/features/ui/icon/assets/map";
 
-export type Props = {
+type Props = {
   name: IconName;
   className?: string;
 };
