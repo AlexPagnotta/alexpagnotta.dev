@@ -20,7 +20,7 @@ export const imageStyles = cva("", {
   },
 });
 
-export const ImageComponent = React.forwardRef((props: Props, ref: React.ForwardedRef<HTMLImageElement>) => {
+const ImageComponent = React.forwardRef((props: Props, ref: React.ForwardedRef<HTMLImageElement>) => {
   const { rounded, className, ...imageProps } = props;
 
   return <NextImage className={imageStyles({ rounded, className })} ref={ref} {...imageProps} />;

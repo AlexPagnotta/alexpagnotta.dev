@@ -5,6 +5,7 @@ import React from "react";
 import { type Content } from "../content/types";
 import { MdxImage } from "../markdown/image/image";
 import { MdxLink } from "../markdown/link";
+import { MdxVideo } from "../markdown/video";
 
 type Props = {
   frontmatter: Content["frontmatter"];
@@ -18,7 +19,8 @@ export type MDXComponents = NonNullable<MDXContentProps["components"]>;
 
 const getComponents = (frontmatter: Content["frontmatter"]): MDXComponents => ({
   a: MdxLink,
-  Image: ({ src, ...props }) => <MdxImage src={`/${frontmatter.assetsPath}/images/${src}`} {...props} />,
+  Image: ({ src, ...props }) => <MdxImage src={`/${frontmatter.assetsPath}/assets/${src}`} {...props} />,
+  Video: ({ src, ...props }) => <MdxVideo src={`/${frontmatter.assetsPath}/assets/${src}`} {...props} />,
 });
 
 // Body
