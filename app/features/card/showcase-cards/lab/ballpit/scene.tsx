@@ -47,7 +47,11 @@ export const BallpitContentCardScene = ({ className }: Props) => {
         {
           isSleeping: true,
           restitution: 0.5,
-          render: { fillStyle: "#EAEAEA" },
+          render: {
+            fillStyle:
+              getComputedStyle(document.documentElement).getPropertyValue("--color-ballpit-card-spheres-color") ||
+              "#ffffff",
+          },
         }
       );
     });

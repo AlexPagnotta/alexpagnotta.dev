@@ -38,8 +38,9 @@
   /* Lab */
 
   /* 3D Ballpit */
-  --color-ballpit-card-bg: rgb(var(--color-gray-10));
+  --color-ballpit-card-bg: rgb(207, 221, 250);
   --color-ballpit-card-text: rgb(var(--color-black));
+  --color-ballpit-card-spheres-color: rgb(169, 190, 232);
 
   /* 3D Carousel */
   --color-carousel-card-bg: rgb(219, 219, 243);
